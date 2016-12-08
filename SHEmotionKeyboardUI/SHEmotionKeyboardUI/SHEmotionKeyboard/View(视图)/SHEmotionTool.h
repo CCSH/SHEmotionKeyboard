@@ -10,6 +10,14 @@
 #import <UIKit/UIKit.h>
 #import "SHEmotionModel.h"
 
+//最新表情的路径
+#define Recentemotions_PAHT [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"recentemotions.archive"]
+
+//收藏图片的路径
+#define CollectImage_PAHT [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"CollectImage.archive"]
+
+#define CollectImage_imagepath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"CollectImage"]
+
 /**
  表情键盘工具类
  */
@@ -23,7 +31,7 @@
 //添加图片到收藏
 + (void)addCollectImageWithUrl:(NSString *)url;
 //删除收藏图片
-+ (void)delectCollectImageWithUrl:(NSString *)url;
++ (void)delectCollectImageWithModel:(SHEmotionModel *)model;
 //获取other图片
 + (UIImage *)emotionImageWithName:(NSString *)name;
 

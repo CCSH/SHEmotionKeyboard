@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, SHEmoticonType) {
-    SHEmoticonType_custom = 101,    //自定义表情
+    SHEmoticonType_custom = 101,  //自定义表情
     SHEmoticonType_system,        //系统表情
     SHEmoticonType_gif,           //GIF表情
     SHEmoticonType_collect,       //收藏表情
+    SHEmoticonType_recent,        //最近表情
 };
 
 /**

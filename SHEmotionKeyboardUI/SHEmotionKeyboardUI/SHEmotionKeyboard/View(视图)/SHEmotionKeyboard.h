@@ -15,28 +15,27 @@
 
 @protocol SHEmotionKeyboardDelegate <NSObject>
 @optional
-/**
- *  获取图片对应文字
- *
- *  @param text 文字
- */
-- (void)emoticonInputDidTapText:(NSString *)text;
+
 
 /**
- *  获取图片表情对应的url
- *
- *  @param url 图片路径
+ 表情键盘内容点击
+
+ @param text 文字
+ @param url 网址
+ @param path 路径
+ @param type 类型
  */
-- (void)emoticonImageDidTapUrl:(NSString *)url;
+- (void)emoticonInputWithText:(NSString *)text Url:(NSString *)url Path:(NSString *)path Type:(SHEmoticonType )type;
 
 /**
- *  删除表情
+ 表情键盘删除点击
  */
-- (void)emoticonInputDidTapBackspace;
+- (void)emoticonInputDelete;
+
 /**
- *  发送表情
+ 表情键盘发送点击
  */
-- (void)emoticonInputDidTapSend;
+- (void)emoticonInputSend;
 
 @end
 

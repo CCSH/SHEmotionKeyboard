@@ -21,19 +21,10 @@
 
 //当前button显示的emotion
 @property (nonatomic, strong) SHEmotionModel *emotion;
-
+//其他
 @property (nonatomic, strong) UIImage *image;
 
-@property (nonatomic, copy) NSString *imageUrl;
-
-@property (nonatomic, assign, getter=isCollectEmotionBtn) BOOL CollectEmotionBtn;
-
 @property (nonatomic, strong) UIButton *deleteButton;
-
-/**
- *  是否为默认表情
- */
-@property (nonatomic, assign, getter=isDefaultEmotionBtn) BOOL DefaultEmotionBtn;
 
 @end
 
@@ -60,11 +51,11 @@
     return _deleteButton;
 }
 
-#pragma mark - 删除点击
+#pragma mark - 收藏删除点击
 - (void)deleteBtnClick:(UIButton *)button{
     [UIView animateWithDuration:0.25 animations:^{
         self.alpha = 0.0;
-        [SHEmotionTool delectCollectImageWithUrl:self.imageUrl];
+        [SHEmotionTool delectCollectImageWithModel:self.emotion];
     } completion:^(BOOL finished) {
         //动画执行完毕,移除
         [self removeFromSuperview];
@@ -90,65 +81,47 @@
             [self setTitle:[emotion.code emoji] forState:UIControlStateNormal];
         }
             break;
+        case SHEmoticonType_collect://收藏
+        {
+            //拼接图片路径
+            NSString *path = CollectImage_imagepath;
+            
+            path = [path stringByAppendingPathComponent:self.emotion.path.lastPathComponent];
+            
+            //设置图片
+            UIImage *image = [UIImage imageWithContentsOfFile:path];
+            
+            [self setImage:image forState:UIControlStateNormal];
+            //设置内距
+            [self setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+            //添加长按手势
+            UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longTap:)];
+            longPress.minimumPressDuration = 0.5;//最小点按时间
+            [self addGestureRecognizer:longPress];
+
+
+        }
+            
+            break;
         default:
             break;
     }
 
 }
 
--(void)setImage:(UIImage *)image{
+- (void)setImage:(UIImage *)image{
     _image = image;
     [self setImage:image forState:UIControlStateNormal];
 }
 
--(void)setImageUrl:(NSString *)imageUrl{
-    
-    _imageUrl = imageUrl;
-    if (imageUrl) {
-        
-        NSArray *tmp = [imageUrl componentsSeparatedByString:@"/"];
-        NSString *magic = [tmp objectAtIndex:tmp.count -2];
-        NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/CollectImage"];
-        if ([magic isEqualToString:@"MagicEmotions"]) {
-            path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/MagicEmotions"];
-            path = [[path stringByAppendingPathComponent:imageUrl.lastPathComponent] stringByReplacingOccurrencesOfString:@".gif" withString:@".jpg"];
-        }
-        else{
-            path = [path stringByAppendingPathComponent:imageUrl.lastPathComponent];
-        }
-        
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:path]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self setImage:image forState:UIControlStateNormal];
-            });
-        });
-    }
-}
-
-- (void)setDefaultEmotionBtn:(BOOL)DefaultEmotionBtn{
-    _DefaultEmotionBtn = DefaultEmotionBtn;
-    if (!DefaultEmotionBtn) {
-        self.imageEdgeInsets =  UIEdgeInsetsMake(5,5,5,5);
-    }
-}
-
-- (void)setCollectEmotionBtn:(BOOL)CollectEmotionBtn{
-    _CollectEmotionBtn = CollectEmotionBtn;
-    if (CollectEmotionBtn) {
-        //添加长按手势
-        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longTap:)];
-        longPress.minimumPressDuration = 0.5;//最小点按时间
-//        longPress.allowableMovement = 50;//允许点击的误差范围
-        [self addGestureRecognizer:longPress];
-        
-    }
-}
-
+#pragma mark - 长按收藏图片
 -(void)longTap:(UILongPressGestureRecognizer *)longRecognizer
 {
-    NSLog(@"长按");
-    self.deleteButton.hidden = NO;
+    //控制连续点击
+    if (longRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"长按收藏图片");
+        self.deleteButton.hidden = NO;
+    }
 }
 
 @end
@@ -175,14 +148,16 @@
 
 //当前选中的button
 @property (nonatomic, weak) UIButton *currentBtn;
-//自定义
+//自定义按钮
 @property (nonatomic, weak) UIButton *customBtn;
-//系统
+//系统按钮
 @property (nonatomic, weak) UIButton *systemBtn;
 //gif按钮
 @property (nonatomic, weak) UIButton *gifBtn;
 //收藏按钮
 @property (nonatomic, weak) UIButton *collectBtn;
+//最近按钮
+@property (nonatomic, weak) UIButton *recentBtn;
 
 @end
 
@@ -219,6 +194,9 @@
                 break;
             case SHEmoticonType_gif://GIF
                 self.gifBtn = [self addChildBtnWithTitle:@"GIF" bgImageName:@"mid" type:SHEmoticonType_gif];
+                break;
+            case SHEmoticonType_recent://最近
+                self.recentBtn = [self addChildBtnWithTitle:@"最近" bgImageName:@"mid" type:SHEmoticonType_recent];
                 break;
         }
         
@@ -355,10 +333,8 @@
 @end
 
 @implementation SHEmotionPageView{
-    NSInteger  _Page_max_col;
-    NSInteger  _Page_max_row;
-    
-    
+    NSInteger  _page_max_col;
+    NSInteger  _page_max_row;
 }
 
 - (UIButton *)deleteButton{
@@ -392,49 +368,29 @@
     SHEmotionModel *model = emotions[0];
     
     if (model.type == SHEmoticonType_gif) {
-        _Page_max_col = 4;
-        _Page_max_row = 2;
+        _page_max_col = 4;
+        _page_max_row = 2;
         [self.deleteButton removeFromSuperview];
     }else{
-        _Page_max_col = 7;
-        _Page_max_row = 3;
+        _page_max_col = 7;
+        _page_max_row = 3;
     }
+
     
-    //添加表情按钮
-    NSInteger count = emotions.count;
-    
-    for (int i=0; i<count; i++) {
-        
+    [emotions enumerateObjectsUsingBlock:^(SHEmotionModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         SHEmotionButton *button = [[SHEmotionButton alloc] init];
-        
-        if ([emotions[i] isKindOfClass:[SHEmotionModel class]]) {
-            //取出对应的表情模型
-            SHEmotionModel *emotion = emotions[i];
-            button.removeHighlightEffect = YES;
-            button.titleLabel.font = [UIFont systemFontOfSize:35];
-            button.emotion = emotion;
-        }else{//不是表情
-            //            button.image = emotions[i];
-            button.imageUrl = emotions[i];
-            button.DefaultEmotionBtn = NO;
-            
-            NSArray *tmp = [emotions[i] componentsSeparatedByString:@"/"];
-            NSString *collect = [tmp objectAtIndex:tmp.count -2];
-            
-            if ([collect isEqualToString:@"CollectImage"]) {
-                
-                button.CollectEmotionBtn = YES;
-                
-            }
-            
-        }
+
+        button.titleLabel.font = [UIFont systemFontOfSize:35];
+        button.emotion = obj;
+    
         //按钮点击监听
         [button addTarget:self action:@selector(emotionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:button];
         
         [self.emotionButtons addObject:button];
-    }
+        
+    }];
     
 }
 
@@ -470,8 +426,8 @@
     NSInteger count = self.emotionButtons.count;
     
     
-    CGFloat childW = (self.width - MARGIN * 2) / _Page_max_col;
-    CGFloat childH = (self.height - MARGIN) / _Page_max_row;
+    CGFloat childW = (self.width - MARGIN * 2) / _page_max_col;
+    CGFloat childH = (self.height - MARGIN) / _page_max_row;
     
     
     for (int i=0; i<count; i++) {
@@ -480,8 +436,8 @@
         view.size = CGSizeMake(childW, childH);
         
         //求出当前在第几列第几行
-        NSInteger col = i % _Page_max_col;
-        NSInteger row = i / _Page_max_col;
+        NSInteger col = i % _page_max_col;
+        NSInteger row = i / _page_max_col;
         
         //设置位置
         view.x = col * childW + MARGIN;
@@ -687,6 +643,9 @@
 //GIF
 @property (nonatomic, strong) SHEmotionListView *gifListView;
 
+//最近
+@property (nonatomic, strong) SHEmotionListView *recentListView;
+
 @end
 
 @implementation SHEmotionKeyboard
@@ -783,71 +742,64 @@
     return _gifListView;
 }
 
+- (SHEmotionListView *)recentListView{
+    if (!_recentListView) {
+        _recentListView = [[SHEmotionListView alloc]init];
+        _recentListView.currentType = SHEmoticonType_recent;
+    }
+    _recentListView.emotions = [SHEmotionTool recentEmotions];
+    return _recentListView;
+}
+
 #pragma mark - EmotionKeyboard代理方法
 #pragma mark 表情选中
 - (void)emotionDidSelected:(NSNotification *)noti{
     SHEmotionButton *button = noti.object;
     NSString *text = nil;
     
+    
     switch (button.emotion.type) {
         case SHEmoticonType_system://系统
             text = button.titleLabel.text;
             break;
-            
+        case SHEmoticonType_collect://收藏
+            text = button.emotion.code;
+            break;
         default:
             text = button.emotion.chs;
             break;
     }
     
-    if (text && [self.delegate respondsToSelector:@selector(emoticonInputDidTapText:)]) {
-        [self.delegate emoticonInputDidTapText:text];
-    }
-    
-    UIButton *btn = (UIButton *)[self.toolBar viewWithTag:SHEmoticonType_collect];
-    UIButton *btn1 = (UIButton *)[self.toolBar viewWithTag:SHEmoticonType_gif];
-    
-    if (!btn.isEnabled) {
-        NSLog(@"收藏图片");
-        if (button.imageUrl) {
-            NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/CollectImage"];
-            path = [path stringByAppendingPathComponent:button.imageUrl.lastPathComponent];
-            
-            if ([self.delegate respondsToSelector:@selector(emoticonImageDidTapUrl:)]) {
-                
-                [self.delegate emoticonImageDidTapUrl:path];
-            }
-            
-        }
-        
-    }else if (!btn1.isEnabled){
-        NSLog(@"GIF表情");
-        if (button.imageUrl) {
-            
-            if ([self.delegate respondsToSelector:@selector(emoticonImageDidTapUrl:)]) {
-                
-                [self.delegate emoticonImageDidTapUrl:button.imageUrl];
-            }
-            
+    [SHEmotionTool addRecentEmotion:button.emotion];
+
+    if ([_delegate respondsToSelector:@selector(emoticonInputWithText:Url:Path:Type:)]) {
+        if (button.emotion.type == SHEmoticonType_collect) {//收藏
+            NSString *path = CollectImage_imagepath;
+            path = [path stringByAppendingPathComponent:button.emotion.path.lastPathComponent];
+            [_delegate emoticonInputWithText:text Url:button.emotion.path Path:path Type:button.emotion.type];
+        }else{
+            [_delegate emoticonInputWithText:text Url:nil Path:button.emotion.path Type:button.emotion.type];
         }
     }
+
     
 }
 
 #pragma mark - 删除按钮点击
 - (void)emotionDeleteBtnSelected{
     
-    if ([self.delegate respondsToSelector:@selector(emoticonInputDidTapBackspace)]) {
+    if ([self.delegate respondsToSelector:@selector(emoticonInputDelete)]) {
         [[UIDevice currentDevice] playInputClick];
-        [self.delegate emoticonInputDidTapBackspace];
+        [self.delegate emoticonInputDelete];
     }
 }
 
 #pragma mark - 发送按钮点击
 - (void)emotionSendBtnSelected{
     
-    if ([self.delegate respondsToSelector:@selector(emoticonInputDidTapSend)]) {
+    if ([self.delegate respondsToSelector:@selector(emoticonInputSend)]) {
         [[UIDevice currentDevice] playInputClick];
-        [self.delegate emoticonInputDidTapSend];
+        [self.delegate emoticonInputSend];
     }
 }
 
@@ -881,24 +833,6 @@
     switch (type) {
         case SHEmoticonType_collect://收藏
             [self addSubview:self.collectListView];
-            
-            if (_collectListView.emotions.count == 0) {
-                UIView *tempView = [[UIView alloc]initWithFrame:self.bounds];
-                UILabel *label = [[UILabel alloc]init];
-                label.text = @"见到喜欢的图片长按,即可添加到收藏...";
-                label.width = tempView.width;
-                label.height = 20;
-                label.centerY = tempView.centerY - 37;
-                label.centerX = tempView.centerX;
-                
-                label.font = [UIFont systemFontOfSize: 14];
-                label.textColor = [UIColor grayColor];
-                label.textAlignment = NSTextAlignmentCenter;
-                
-                [tempView addSubview:label];
-                
-                [self addSubview:tempView];
-            }
             break;
         case SHEmoticonType_custom://自定义
             [self addSubview:self.customListView];
@@ -908,6 +842,10 @@
             break;
         case SHEmoticonType_gif://GIF
             [self addSubview:self.gifListView];
+            break;
+        case SHEmoticonType_recent://最近
+            [self addSubview:self.recentListView];
+            
             break;
     }
 

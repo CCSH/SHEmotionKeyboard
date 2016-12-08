@@ -9,14 +9,6 @@
 #import "SHEmotionTool.h"
 #import "SHEmotionModel.h"
 
-//最新表情的路径
-#define Recentemotions_PAHT [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"recentemotions.archive"]
-
-//收藏图片的路径
-#define CollectImage_PAHT [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"CollectImage.archive"]
-
-#define CollectImage_imagepath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"CollectImage"]
-
 //最近表情数组
 static NSMutableArray *_recentEmotions;
 //收藏表情数组
@@ -30,6 +22,7 @@ static NSMutableArray *_collectImages;
         _recentEmotions = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:Recentemotions_PAHT]];
     }
     if (!_collectImages) {
+        
         _collectImages = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:CollectImage_PAHT]];
     }
 }
@@ -83,8 +76,16 @@ static NSMutableArray *_collectImages;
         if (result) {
             NSLog(@"添加收藏成功");
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_collectImages removeObject:path];
-                [_collectImages insertObject:path atIndex:0];
+                
+                SHEmotionModel *model = [[SHEmotionModel alloc]init];
+                model.code = [NSString stringWithFormat:@"[%@]",url.lastPathComponent];
+                model.png = url.lastPathComponent;
+                model.type = SHEmoticonType_collect;
+                model.path = url;
+                
+                [_collectImages removeObject:model];
+                [_collectImages insertObject:model atIndex:0];
+                
                 [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:CollectImage_PAHT];
             });
         }else{
@@ -95,9 +96,9 @@ static NSMutableArray *_collectImages;
 }
 
 #pragma mark - 删除收藏图片
-+ (void)delectCollectImageWithUrl:(NSString *)url{
++ (void)delectCollectImageWithModel:(SHEmotionModel *)model{
     
-    [_collectImages removeObject:url];
+    [_collectImages removeObject:model];
     [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:CollectImage_PAHT];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"delectCollectImage" object:nil];
     
@@ -210,6 +211,7 @@ static NSMutableArray *_collectImages;
     NSMutableArray *faceArr = [[NSMutableArray alloc] init];
     [faceArr addObjectsFromArray:[SHEmotionTool customEmotions]];
     [faceArr addObjectsFromArray:[SHEmotionTool gifEmotions]];
+    [faceArr addObjectsFromArray:[SHEmotionTool collectEmotions]];
     
     //如果有多个表情图，必须从后往前替换，因为替换后Range就不准确了
     for (int j =(int) arr.count - 1; j >= 0; j--) {

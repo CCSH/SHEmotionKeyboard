@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *message;
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
+@property (weak, nonatomic) IBOutlet UITextField *imageTextFile;
 
 //表情键盘
 @property (nonatomic , strong) SHEmotionKeyboard *emotionKeyboard;
@@ -27,6 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.messageTextView.delegate = self;
+    self.messageTextView.enablesReturnKeyAutomatically = YES;
+    
+    
+    self.imageTextFile.text = @"http://4493bz.1985t.com/uploads/allimg/150127/4-15012G52133.jpg";
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -46,13 +51,25 @@
     [self.view endEditing:YES];
     self.emotionKeyboard.hidden = !self.emotionKeyboard.hidden;
 }
+- (IBAction)addRecentClick:(id)sender {
+    
+    if ([self.imageTextFile.text rangeOfString:@"http"].location != NSNotFound) {
+        self.imageTextFile.placeholder = @"请输入要收藏的图片网址";
+        [SHEmotionTool addCollectImageWithUrl:self.imageTextFile.text];
+    }else{
+        self.imageTextFile.placeholder = @"别捣乱!!请输入要收藏的图片网址";
+    }
+    self.imageTextFile.text = nil;
+ 
+}
 
 - (SHEmotionKeyboard *)emotionKeyboard{
     
     if (!_emotionKeyboard) {
         _emotionKeyboard = [SHEmotionKeyboard sharedSHEmotionKeyboard];
          _emotionKeyboard.frame = CGRectMake(0, self.view.frame.size.height - 216, self.view.frame.size.width, 216);
-        _emotionKeyboard.toolBarArr = @[@"101",@"102",@"103",@"104"];
+        //自定义：101 系统：102 gif：103 收藏：104 最近：105
+        _emotionKeyboard.toolBarArr = @[@"101",@"105",@"103",@"104"];
         _emotionKeyboard.hidden = YES;
         _emotionKeyboard.delegate = self;
         [self.view addSubview:_emotionKeyboard];
@@ -62,20 +79,25 @@
 
 #pragma mark - SHEmotionKeyboardDelegate
 #pragma mark 发送表情
-- (void)emoticonInputDidTapSend
+- (void)emoticonInputSend
 {
     //发送文字
      self.message.attributedText =  [SHEmotionTool dealTheMessageWithStr:self.messageTextView.text];
 }
 
 #pragma mark 获取表情对应字符
-- (void)emoticonInputDidTapText:(NSString*)text
+- (void)emoticonInputWithText:(NSString *)text Url:(NSString *)url Path:(NSString *)path Type:(SHEmoticonType)type
 {
-    [self.messageTextView insertText:text];
+    if (type == SHEmoticonType_collect) {//收藏(收藏可以用url)
+        [self.messageTextView insertText:text];
+    }else{
+        [self.messageTextView insertText:text];
+    }
+    
 }
 
 #pragma mark 删除表情
-- (void)emoticonInputDidTapBackspace
+- (void)emoticonInputDelete
 {
     NSString* inputString;
     inputString = self.messageTextView.text;
@@ -113,16 +135,6 @@
         }
     }
     [self.messageTextView setText:string];
-}
-
-/**
- *  获取图片表情对应的url
- *
- *  @param url <#url description#>
- */
-- (void)emoticonImageDidTapUrl:(NSString*)url
-{
-    NSLog(@"%@", url);
 }
 
 

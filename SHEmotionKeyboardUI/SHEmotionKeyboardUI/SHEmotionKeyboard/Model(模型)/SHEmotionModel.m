@@ -93,7 +93,12 @@ iKY_AUTO_SERIALIZATION
 }
 
 - (void)setPath:(NSString *)path{
-    _path = [NSString stringWithFormat:@"%@%@",path,self.png];
+    
+    if ([path rangeOfString:@"http"].location != NSNotFound) {//收藏
+        _path = path;
+    }else{
+        _path = [NSString stringWithFormat:@"%@%@",path,self.png];
+    }
     
 }
 
