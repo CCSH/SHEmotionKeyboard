@@ -62,9 +62,7 @@ iKY_AUTO_SERIALIZATION
         }
         
     }
-    
     return obj;
-    
 }
 
 +(NSArray *)loadProperties{
@@ -89,17 +87,6 @@ iKY_AUTO_SERIALIZATION
     free(properties);
     
     return arrayM;
-    
-}
-
-- (void)setPath:(NSString *)path{
-    
-    if ([path rangeOfString:@"http"].location != NSNotFound) {//收藏
-        _path = path;
-    }else{
-        _path = [NSString stringWithFormat:@"%@%@",path,self.png];
-    }
-    
 }
 
 /**
@@ -110,12 +97,12 @@ iKY_AUTO_SERIALIZATION
  *  @return <#return value description#>
  */
 - (BOOL)isEqual:(SHEmotionModel *)object{
+    
     if ([self.chs isEqualToString:object.chs] || [self.code isEqualToString:object.code]) {
         return YES;
     }else{
         return NO;
     }
 }
-
 
 @end

@@ -16,7 +16,13 @@
 //收藏图片的路径
 #define CollectImage_PAHT [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"CollectImage.archive"]
 
-#define CollectImage_imagepath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"CollectImage"]
+
+//收藏图片拼接路径
+#define kCollect_Emoji_Path [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"CollectImage/"]
+//自定义表情拼接路径
+#define kCustom_Emoji_Path [NSString stringWithFormat:@"%@/custom_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]
+//Gif表情拼接路径
+#define kGif_Emoji_Path [NSString stringWithFormat:@"%@/gif_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]
 
 /**
  表情键盘工具类

@@ -20,12 +20,10 @@
 /**
  表情键盘内容点击
 
- @param text 文字
- @param url 网址
- @param path 路径
- @param type 类型
+ @param text 内容
+ @param model 表情模型
  */
-- (void)emoticonInputWithText:(NSString *)text Url:(NSString *)url Path:(NSString *)path Type:(SHEmoticonType )type;
+- (void)emoticonInputWithText:(NSString *)text Model:(SHEmotionModel *)model isSend:(BOOL)isSend;
 
 /**
  表情键盘删除点击

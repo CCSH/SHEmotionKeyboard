@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -65,9 +65,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xy2-nc-6UF">
+                                <rect key="frame" x="246" y="340" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <webView contentMode="scaleAspectFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gRJ-en-TRd">
+                                <rect key="frame" x="112.5" y="301" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Q4m-fk-8oj"/>
+                                    <constraint firstAttribute="height" constant="150" id="znE-1V-54m"/>
+                                </constraints>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gRJ-en-TRd" firstAttribute="top" secondItem="O1K-SI-Hix" secondAttribute="bottom" constant="10" id="2Dt-BD-h0b"/>
                             <constraint firstAttribute="trailing" secondItem="jcW-Kq-Jfs" secondAttribute="trailing" constant="20" id="3RI-bO-OAQ"/>
                             <constraint firstItem="jcW-Kq-Jfs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="5XG-ek-KjL"/>
                             <constraint firstItem="5sc-QT-gc5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Ee6-cL-Jg2"/>
@@ -78,6 +92,7 @@
                             <constraint firstItem="rqx-C4-vRl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="aNW-l4-Y5D"/>
                             <constraint firstItem="rqx-C4-vRl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="ds2-sB-CrP"/>
                             <constraint firstAttribute="trailing" secondItem="O1K-SI-Hix" secondAttribute="trailing" constant="20" id="e4D-7m-LNu"/>
+                            <constraint firstItem="gRJ-en-TRd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eyp-Ob-Uj0"/>
                             <constraint firstItem="69g-r5-bF8" firstAttribute="top" secondItem="rqx-C4-vRl" secondAttribute="bottom" constant="20" id="iga-Ur-xMT"/>
                             <constraint firstItem="69g-r5-bF8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="oh6-Gm-Aro"/>
                             <constraint firstItem="O1K-SI-Hix" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="r7N-4i-ajP"/>
@@ -91,6 +106,7 @@
                         <outlet property="imageTextFile" destination="jcW-Kq-Jfs" id="5H4-9Q-nu0"/>
                         <outlet property="message" destination="rqx-C4-vRl" id="k6p-eq-4O9"/>
                         <outlet property="messageTextView" destination="69g-r5-bF8" id="3PG-YN-RHz"/>
+                        <outlet property="otherMessage" destination="gRJ-en-TRd" id="A9G-Dt-fLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

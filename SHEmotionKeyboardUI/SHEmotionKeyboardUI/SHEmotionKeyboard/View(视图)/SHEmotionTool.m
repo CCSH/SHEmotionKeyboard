@@ -18,11 +18,14 @@ static NSMutableArray *_collectImages;
 
 #pragma mark 初始化
 + (void)initialize{
+    
+    //拿出最近表情
     if (!_recentEmotions) {
         _recentEmotions = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:Recentemotions_PAHT]];
     }
+    
+    //拿出收藏表情
     if (!_collectImages) {
-        
         _collectImages = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:CollectImage_PAHT]];
     }
 }
@@ -61,7 +64,7 @@ static NSMutableArray *_collectImages;
 #pragma mark - 添加收藏图片
 + (void)addCollectImageWithUrl:(NSString *)url{
     
-    NSString *path = CollectImage_imagepath;
+    NSString *path = kCollect_Emoji_Path;
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:path])
     {
@@ -81,7 +84,7 @@ static NSMutableArray *_collectImages;
                 model.code = [NSString stringWithFormat:@"[%@]",url.lastPathComponent];
                 model.png = url.lastPathComponent;
                 model.type = SHEmoticonType_collect;
-                model.path = url;
+                model.url = url;
                 
                 [_collectImages removeObject:model];
                 [_collectImages insertObject:model atIndex:0];
@@ -145,12 +148,11 @@ static NSMutableArray *_collectImages;
     NSMutableArray *arrayM = [NSMutableArray array];
     
     for (NSDictionary *dict in array) {
+        //模型转换
         SHEmotionModel *model = [SHEmotionModel emotionWithDict:dict];
         model.type = SHEmoticonType_custom;
         [arrayM addObject:model];
     };
-    //给集合里面每一个元素都执行某个方法
-    [arrayM makeObjectsPerformSelector:@selector(setPath:) withObject:[NSString stringWithFormat:@"%@/custom_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]];
     
     return arrayM;
 }
@@ -163,10 +165,12 @@ static NSMutableArray *_collectImages;
     NSMutableArray *arrayM = [NSMutableArray array];
     
     for (NSDictionary *dict in array) {
+        //模型转换
         SHEmotionModel *model = [SHEmotionModel emotionWithDict:dict];
         model.type = SHEmoticonType_system;
         [arrayM addObject:model];
     }
+    
     return arrayM;
 }
 
@@ -178,12 +182,12 @@ static NSMutableArray *_collectImages;
     NSMutableArray *arrayM = [NSMutableArray array];
     
     for (NSDictionary *dict in array) {
+        //模型转换
         SHEmotionModel *model = [SHEmotionModel emotionWithDict:dict];
         model.type = SHEmoticonType_gif;
         [arrayM addObject:model];
     }
-    //给集合里面每一个元素都执行某个方法
-    [arrayM makeObjectsPerformSelector:@selector(setPath:) withObject:[NSString stringWithFormat:@"%@/gif_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]];
+
     return arrayM;
 }
 
@@ -193,25 +197,19 @@ static NSMutableArray *_collectImages;
     
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str];
     
-    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:NSMakeRange(0, str.length)];
-    
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:22] range:NSMakeRange(0, str.length)];
     //    \\[(emoji_\\d+?)\\]               [emoji_数字]
     //    \\[[\\u4e00-\\u9fa5|a-z|A-Z]+\\]     [文字]
     
-    NSString * zhengze = @"\\[[\\u4e00-\\u9fa5|a-z|A-Z]+\\]";
+    NSString *zhengze = @"\\[[^\\[|^\\]]+\\]";
     //正则表达式
-    NSRegularExpression * re = [NSRegularExpression regularExpressionWithPattern:zhengze options:NSRegularExpressionCaseInsensitive error:nil];
+    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:zhengze options:NSRegularExpressionCaseInsensitive error:nil];
     
-    NSArray * arr = [re matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    NSArray *arr = [re matchesInString:str options:0 range:NSMakeRange(0, str.length)];
     
-    //测试用的纸匹配自定义图片
-//    NSArray *faceArr =  [SHEmotionTool customEmotions];
-//    faceArr =  [SHEmotionTool gifEmotions];
     NSMutableArray *faceArr = [[NSMutableArray alloc] init];
+    //添加资源文件
     [faceArr addObjectsFromArray:[SHEmotionTool customEmotions]];
     [faceArr addObjectsFromArray:[SHEmotionTool gifEmotions]];
-    [faceArr addObjectsFromArray:[SHEmotionTool collectEmotions]];
     
     //如果有多个表情图，必须从后往前替换，因为替换后Range就不准确了
     for (int j =(int) arr.count - 1; j >= 0; j--) {
@@ -219,6 +217,7 @@ static NSMutableArray *_collectImages;
         NSTextCheckingResult * result = arr[j];
         
         [faceArr enumerateObjectsUsingBlock:^(SHEmotionModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
             if ([[str substringWithRange:result.range] isEqualToString:obj.code] || [[str substringWithRange:result.range] isEqualToString:obj.chs])//从数组中的字典中取元素
             {
                 
@@ -226,10 +225,24 @@ static NSMutableArray *_collectImages;
                 
                 NSTextAttachment * textAttachment = [[NSTextAttachment alloc]init];//添加附件,图片
                 
-                textAttachment.image = [UIImage imageWithContentsOfFile:model.path];
+                switch (model.type) {
+                    case SHEmoticonType_custom://自定义
+                    {
+                        textAttachment.image = [UIImage imageWithContentsOfFile:[kCustom_Emoji_Path stringByAppendingString:model.png]];
+                    }
+                        break;
+                    case SHEmoticonType_gif://Gif
+                    {
+                        textAttachment.image = [UIImage imageWithContentsOfFile:[kGif_Emoji_Path stringByAppendingString:model.png]];
+                    }
+                        break;
+                    default:
+                        break;
+                }
                 
-                CGFloat height = [UIFont systemFontOfSize:22].lineHeight;
-                textAttachment.bounds = CGRectMake(0, -2, height, height);
+                //调整位置
+                CGFloat height = [UIFont systemFontOfSize:18].lineHeight;
+                textAttachment.bounds = CGRectMake(0, -5, height, height);
                 
                 NSAttributedString * imageStr = [NSAttributedString attributedStringWithAttachment:textAttachment];
                 

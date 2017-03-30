@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet UITextField *imageTextFile;
+@property (weak, nonatomic) IBOutlet UIWebView *otherMessage;
+
 
 //表情键盘
 @property (nonatomic , strong) SHEmotionKeyboard *emotionKeyboard;
@@ -68,8 +70,10 @@
     if (!_emotionKeyboard) {
         _emotionKeyboard = [SHEmotionKeyboard sharedSHEmotionKeyboard];
          _emotionKeyboard.frame = CGRectMake(0, self.view.frame.size.height - 216, self.view.frame.size.width, 216);
-        //自定义：101 系统：102 gif：103 收藏：104 最近：105
-        _emotionKeyboard.toolBarArr = @[@"101",@"105",@"103",@"104"];
+    
+        //配置表情键盘内容
+        _emotionKeyboard.toolBarArr = @[[NSString stringWithFormat:@"%lu",(unsigned long)SHEmoticonType_custom],[NSString stringWithFormat:@"%lu",(unsigned long)SHEmoticonType_system],[NSString stringWithFormat:@"%lu",(unsigned long)SHEmoticonType_gif],[NSString stringWithFormat:@"%lu",(unsigned long)SHEmoticonType_collect],[NSString stringWithFormat:@"%lu",(unsigned long)SHEmoticonType_recent]];
+        
         _emotionKeyboard.hidden = YES;
         _emotionKeyboard.delegate = self;
         [self.view addSubview:_emotionKeyboard];
@@ -86,14 +90,33 @@
 }
 
 #pragma mark 获取表情对应字符
-- (void)emoticonInputWithText:(NSString *)text Url:(NSString *)url Path:(NSString *)path Type:(SHEmoticonType)type
-{
-    if (type == SHEmoticonType_collect) {//收藏(收藏可以用url)
-        [self.messageTextView insertText:text];
+- (void)emoticonInputWithText:(NSString *)text Model:(SHEmotionModel *)model isSend:(BOOL)isSend{
+    
+    if (isSend) {//直接进行发送
+
+        switch (model.type) {
+            case SHEmoticonType_collect://收藏(可用Url、也可以用路径)
+            {
+                //Url
+//                [self.otherMessage loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.url]]];
+                NSData *data = [NSData dataWithContentsOfFile:model.path];
+                [self.otherMessage loadData:data MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL new]];
+            }
+                break;
+            case SHEmoticonType_gif://Gif(默认路径为静态的)
+            {
+                NSData *data = [NSData dataWithContentsOfFile:[kGif_Emoji_Path stringByAppendingString:model.gif]];
+                [self.otherMessage loadData:data MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL new]];
+            }
+                break;
+                
+            default:
+                break;
+        }
     }else{
+        //放到文本框
         [self.messageTextView insertText:text];
     }
-    
 }
 
 #pragma mark 删除表情
