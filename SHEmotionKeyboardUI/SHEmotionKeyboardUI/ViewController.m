@@ -43,7 +43,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]) {//点击了发送
         //发送文字
-        self.message.attributedText =  [SHEmotionTool dealTheMessageWithStr:self.messageTextView.text];
+        self.message.attributedText =  [SHEmotionTool dealMessageWithStr:self.messageTextView.text];
         return NO;
     }
     return YES;
@@ -86,7 +86,7 @@
 - (void)emoticonInputSend
 {
     //发送文字
-     self.message.attributedText =  [SHEmotionTool dealTheMessageWithStr:self.messageTextView.text];
+     self.message.attributedText =  [SHEmotionTool dealMessageWithStr:self.messageTextView.text];
 }
 
 #pragma mark 获取表情对应字符
@@ -118,48 +118,6 @@
         [self.messageTextView insertText:text];
     }
 }
-
-#pragma mark 删除表情
-- (void)emoticonInputDelete
-{
-    NSString* inputString;
-    inputString = self.messageTextView.text;
-    NSString* string = nil;
-    NSInteger stringLength = inputString.length;
-    
-    if (stringLength > 0) {
-        if (stringLength == 1 || stringLength == 2) { //只有1个或2个字符时
-            if ([inputString isEmoji]) { //emoji
-                string = @"";
-            }
-            else { //普通字符
-                string = [inputString substringToIndex:stringLength - 1];
-            }
-        }
-        else if ([@"]" isEqualToString:[inputString substringFromIndex:stringLength - 1]]) { //默认表情
-            
-            if ([inputString rangeOfString:@"["].location == NSNotFound) {
-                string = [inputString substringToIndex:stringLength - 1];
-            }
-            else {
-                string = [inputString substringToIndex:[inputString rangeOfString:@"[" options:NSBackwardsSearch].location];
-            }
-        }else if ([[inputString substringFromIndex:stringLength - 1] isEmoji] || [[inputString substringFromIndex:stringLength - 2] isEmoji]) { //末尾是emoji
-            
-            if ([[inputString substringFromIndex:stringLength - 2] isEmoji]) {
-                string = [inputString substringToIndex:stringLength - 2];
-            }
-            else if ([[inputString substringFromIndex:stringLength - 1] isEmoji]) {
-                string = [inputString substringToIndex:stringLength - 1];
-            }
-        }
-        else { //是普通文字
-            string = [inputString substringToIndex:stringLength - 1];
-        }
-    }
-    [self.messageTextView setText:string];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

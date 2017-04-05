@@ -336,9 +336,6 @@
 
 @interface SHEmotionPageView()
 
-//表情删除按钮
-@property (nonatomic, strong) UIButton *deleteButton;
-
 //表情按钮对应的集合,记录表情按钮,以便在调整位置的时候用到
 @property (nonatomic, strong) NSMutableArray *emotionButtons;
 
@@ -349,23 +346,6 @@
     NSInteger  _page_max_col;
     NSInteger  _page_max_row;
 }
-
-- (UIButton *)deleteButton{
-    if (!_deleteButton) {
-        //表情删除按钮
-        _deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        //设置不同状态的图片
-        [_deleteButton setImage:[SHEmotionTool emotionImageWithName:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
-        
-        [_deleteButton setImage:[SHEmotionTool emotionImageWithName:@"compose_emotion_delete"] forState:UIControlStateNormal];
-        //添加删除按钮点击事件
-        [_deleteButton addTarget:self action:@selector(deleteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:_deleteButton];
-    }
-    return _deleteButton;
-}
-
 
 - (NSMutableArray *)emotionButtons{
     if (!_emotionButtons) {
@@ -383,10 +363,9 @@
         {
             _page_max_col = 4;
             _page_max_row = 2;
-            [self.deleteButton removeFromSuperview];
         }
             break;
-        default:
+        default://其他7*3
         {
             _page_max_col = 7;
             _page_max_row = 3;
@@ -413,17 +392,6 @@
 }
 
 /**
- *  删除按钮点击
- *
- *  @param button <#button description#>
- */
-- (void)deleteButtonClick:(UIButton *)button{
-    
-    //发送一个删除按钮点击的通知
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"EmotionDeleteBtnSelectedNoti" object:nil];
-}
-
-/**
  *  表情点击
  *
  *  @param button <#button description#>
@@ -441,10 +409,10 @@
     //取出子控件的个数
     NSInteger count = self.emotionButtons.count;
     
-    CGFloat childW = (self.width - MARGIN * 2) / _page_max_col;
+    CGFloat childW = (self.width - MARGIN) / _page_max_col;
     CGFloat childH = (self.height - MARGIN) / _page_max_row;
     
-    for (int i=0; i<count; i++) {
+    for (int i = 0; i < count; i++) {
         UIView *view = self.emotionButtons[i];
         
         view.size = CGSizeMake(childW, childH);
@@ -457,11 +425,6 @@
         view.x = col * childW + MARGIN;
         view.y = row * childH + MARGIN;
     }
-    
-    self.deleteButton.size = CGSizeMake(childW - 8, childH - 8);
-    
-    self.deleteButton.x = self.width - childW - MARGIN + 4;
-    self.deleteButton.y = self.height - childH + 4;
 }
 
 @end
@@ -565,6 +528,7 @@
 }
 
 - (void)setEmotions:(NSArray *)emotions{
+    
     _emotions = emotions;
     
     [self.scrollView scrollsToTop];
@@ -573,20 +537,17 @@
     [self.scrollsubViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.scrollsubViews removeAllObjects];
     
-    
     //计算一页最多多少个
-    NSInteger pageMaxEmotionCount = (self.currentType == SHEmoticonType_gif)?8:20;
+    NSInteger pageMaxEmotionCount = (self.currentType == SHEmoticonType_gif)?(2*4):(7*3);
     //根据个数计算出多少页
-    
     
     //(总数+每一页的个数-1)/每一页的个数
     NSInteger page = (emotions.count + pageMaxEmotionCount - 1 )/ pageMaxEmotionCount ;
     
-    
     //设置页数
     self.pageControl.numberOfPages = page;
     
-    for (int i=0; i < page; i++) {
+    for (int i = 0; i < page; i++) {
         
         SHEmotionPageView *view = [[SHEmotionPageView alloc] init];
         view.tag = self.currentType;
@@ -683,9 +644,6 @@
     
     //表情点击通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDidSelected:) name:@"EmotionDidSelectedNoti" object:nil];
-    
-    //删除点击通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionDeleteBtnSelected) name:@"EmotionDeleteBtnSelectedNoti" object:nil];
     //发送点击通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(emotionSendBtnSelected) name:@"EmotionSendBtnSelectedNoti" object:nil];
     //删除收藏图片通知
@@ -775,7 +733,7 @@
     //设置显示文字
     switch (button.emotion.type) {
         case SHEmoticonType_system://系统
-            text = button.emotion.path;
+            text = button.titleLabel.text;
             break;
         case SHEmoticonType_collect://收藏
             text = button.emotion.code;
@@ -811,15 +769,6 @@
             }
                 break;
         }
-    }
-}
-
-#pragma mark - 删除按钮点击
-- (void)emotionDeleteBtnSelected{
-    
-    if ([self.delegate respondsToSelector:@selector(emoticonInputDelete)]) {
-        [[UIDevice currentDevice] playInputClick];
-        [self.delegate emoticonInputDelete];
     }
 }
 

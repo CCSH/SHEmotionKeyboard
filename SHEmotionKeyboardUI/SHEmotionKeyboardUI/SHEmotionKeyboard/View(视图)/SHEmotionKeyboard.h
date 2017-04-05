@@ -16,7 +16,6 @@
 @protocol SHEmotionKeyboardDelegate <NSObject>
 @optional
 
-
 /**
  表情键盘内容点击
 
@@ -24,11 +23,6 @@
  @param model 表情模型
  */
 - (void)emoticonInputWithText:(NSString *)text Model:(SHEmotionModel *)model isSend:(BOOL)isSend;
-
-/**
- 表情键盘删除点击
- */
-- (void)emoticonInputDelete;
 
 /**
  表情键盘发送点击

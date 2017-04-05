@@ -94,7 +94,6 @@ static NSMutableArray *_collectImages;
         }else{
             NSLog(@"添加收藏失败");
         }
-        
     });
 }
 
@@ -191,12 +190,43 @@ static NSMutableArray *_collectImages;
     return arrayM;
 }
 
-#pragma mark 文字编辑
-+ (NSMutableAttributedString *)dealTheMessageWithStr:(NSString *)str
-{
+#pragma mark 字符串处理 字符串 -> 表情
++ (NSAttributedString *)dealMessageWithEmotion:(SHEmotionModel *)emotion {
+    
+    NSTextAttachment * textAttachment = [[NSTextAttachment alloc]init];//添加附件,图片
+    
+    switch (emotion.type) {
+        case SHEmoticonType_custom://自定义
+        {
+            textAttachment.image = [UIImage imageWithContentsOfFile:[kCustom_Emoji_Path stringByAppendingString:emotion.png]];
+        }
+            break;
+        case SHEmoticonType_gif://Gif
+        {
+            textAttachment.image = [UIImage imageWithContentsOfFile:[kGif_Emoji_Path stringByAppendingString:emotion.png]];
+        }
+            break;
+        case SHEmoticonType_system://系统
+        {
+            return [[NSAttributedString alloc]initWithString:emotion.path];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    //调整位置
+    CGFloat height = [UIFont systemFontOfSize:18].lineHeight;
+    textAttachment.bounds = CGRectMake(0, -5, height, height);
+    
+    return [NSAttributedString attributedStringWithAttachment:textAttachment];
+}
+
+#pragma mark 全字符串处理 表情 -> 字符串
++ (NSAttributedString *)dealMessageWithStr:(NSString *)str{
     
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str];
-    
+
     //    \\[(emoji_\\d+?)\\]               [emoji_数字]
     //    \\[[\\u4e00-\\u9fa5|a-z|A-Z]+\\]     [文字]
     
@@ -220,39 +250,15 @@ static NSMutableArray *_collectImages;
             
             if ([[str substringWithRange:result.range] isEqualToString:obj.code] || [[str substringWithRange:result.range] isEqualToString:obj.chs])//从数组中的字典中取元素
             {
-                
                 SHEmotionModel *model = [SHEmotionTool emotionWithChs:obj.chs];
-                
-                NSTextAttachment * textAttachment = [[NSTextAttachment alloc]init];//添加附件,图片
-                
-                switch (model.type) {
-                    case SHEmoticonType_custom://自定义
-                    {
-                        textAttachment.image = [UIImage imageWithContentsOfFile:[kCustom_Emoji_Path stringByAppendingString:model.png]];
-                    }
-                        break;
-                    case SHEmoticonType_gif://Gif
-                    {
-                        textAttachment.image = [UIImage imageWithContentsOfFile:[kGif_Emoji_Path stringByAppendingString:model.png]];
-                    }
-                        break;
-                    default:
-                        break;
-                }
-                
-                //调整位置
-                CGFloat height = [UIFont systemFontOfSize:18].lineHeight;
-                textAttachment.bounds = CGRectMake(0, -5, height, height);
-                
-                NSAttributedString * imageStr = [NSAttributedString attributedStringWithAttachment:textAttachment];
-                
-                [attStr replaceCharactersInRange:result.range withAttributedString:imageStr];//替换未图片附件
+                //替换未图片附件
+                [attStr replaceCharactersInRange:result.range withAttributedString:[self dealMessageWithEmotion:model]];
                 
                 *stop = YES;
             }
         }];
-        
     }
+
     return attStr;
 }
 

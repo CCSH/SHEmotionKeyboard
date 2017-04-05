@@ -57,7 +57,12 @@
 //收藏图片
 + (NSArray *)collectEmotions;
 
-//匹配字符串
-+ (NSMutableAttributedString *)dealTheMessageWithStr:(NSString *)str;
+//字符串处理 字符串 -> 表情
++ (NSAttributedString *)dealMessageWithEmotion:(SHEmotionModel *)emotion;
+
+//字符串处理 表情 -> 字符串
++ (NSAttributedString *)dealMessageWithStr:(NSString *)str;
+
+
 
 @end
