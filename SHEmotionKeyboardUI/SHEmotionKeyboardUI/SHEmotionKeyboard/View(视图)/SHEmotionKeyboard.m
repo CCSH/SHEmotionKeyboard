@@ -491,6 +491,7 @@
         
         [control setCurrentPageIndicatorTintColor:EmotionRGB(134, 134, 134)];
         [control setPageIndicatorTintColor:EmotionRGB(180, 180, 180)];
+        control.userInteractionEnabled = NO;
         
         [self addSubview:control];
         _pageControl = control;
