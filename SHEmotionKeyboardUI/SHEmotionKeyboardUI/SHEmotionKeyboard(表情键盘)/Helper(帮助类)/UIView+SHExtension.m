@@ -1,12 +1,12 @@
 //
-//  UIView+Extension.m
-//  CoolTalk
+//  UIView+SHExtension.m
+//  iOSAPP
 //
 //  Created by CSH on 16/7/5.
 //  Copyright © 2016年 CSH. All rights reserved.
 //
 
-#import "UIView+Extension.h"
+#import "UIView+SHExtension.h"
 
 @implementation UIView (Extension)
 
@@ -108,19 +108,5 @@
     return self.frame.origin;
 }
 
-- (UIImageView *)findHairlineImageViewUnder {
-    
-    if ([self isKindOfClass:UIImageView.class] && self.bounds.size.height <= 1.0) {
-        return (UIImageView *)self;
-    }
-    
-    for (UIView * subview in self.subviews) {
-        UIImageView * imageView = [subview findHairlineImageViewUnder];
-        if (imageView) {
-            return imageView;
-        }
-    }
-    return nil;
-}
 
 @end

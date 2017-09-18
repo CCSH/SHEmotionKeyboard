@@ -31,7 +31,6 @@ typedef NS_ENUM(NSUInteger, SHEmoticonType) {
  */
 @property (nonatomic, copy) NSString *chs;
 
-
 /**
  *  图片名字
  */
@@ -46,7 +45,6 @@ typedef NS_ENUM(NSUInteger, SHEmoticonType) {
  *  收藏图片Url
  */
 @property (nonatomic, copy) NSString *url;
-
 
 /**
  *  表情对应的路径

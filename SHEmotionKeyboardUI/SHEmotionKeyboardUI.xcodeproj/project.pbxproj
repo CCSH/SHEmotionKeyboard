@@ -7,22 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C59BD151F6F5861008C1FE5 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C59BD0A1F6F5861008C1FE5 /* NSString+Emoji.m */; };
+		5C59BD161F6F5861008C1FE5 /* SHEmotionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C59BD0D1F6F5861008C1FE5 /* SHEmotionModel.m */; };
+		5C59BD171F6F5861008C1FE5 /* SHEmotionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C59BD0F1F6F5861008C1FE5 /* SHEmotionKeyboard.bundle */; };
+		5C59BD181F6F5861008C1FE5 /* SHEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C59BD121F6F5861008C1FE5 /* SHEmotionKeyboard.m */; };
+		5C59BD191F6F5861008C1FE5 /* SHEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C59BD141F6F5861008C1FE5 /* SHEmotionTool.m */; };
+		5C59BD2A1F6F588C008C1FE5 /* UIView+SHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C59BD1B1F6F588C008C1FE5 /* UIView+SHExtension.m */; };
 		5CC7E7E31DF79C620059EDAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E7E21DF79C620059EDAA /* main.m */; };
 		5CC7E7E61DF79C620059EDAA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E7E51DF79C620059EDAA /* AppDelegate.m */; };
 		5CC7E7E91DF79C620059EDAA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E7E81DF79C620059EDAA /* ViewController.m */; };
 		5CC7E7EC1DF79C620059EDAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC7E7EA1DF79C620059EDAA /* Main.storyboard */; };
 		5CC7E7EE1DF79C620059EDAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CC7E7ED1DF79C620059EDAA /* Assets.xcassets */; };
 		5CC7E7F11DF79C620059EDAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC7E7EF1DF79C620059EDAA /* LaunchScreen.storyboard */; };
-		5CC7E7FD1DF79D960059EDAA /* SHEmotionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5CC7E7FC1DF79D960059EDAA /* SHEmotionKeyboard.bundle */; };
-		5CC7E8001DF79F070059EDAA /* SHEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E7FF1DF79F070059EDAA /* SHEmotionKeyboard.m */; };
-		5CC7E8061DF79FA20059EDAA /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E8031DF79FA20059EDAA /* NSString+Emoji.m */; };
-		5CC7E8071DF79FA20059EDAA /* UIButton+RemoveHighlightEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E8051DF79FA20059EDAA /* UIButton+RemoveHighlightEffect.m */; };
-		5CC7E80A1DF7A0AB0059EDAA /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E8091DF7A0AB0059EDAA /* UIView+Extension.m */; };
-		5CC7E80D1DF7A0CB0059EDAA /* SHEmotionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E80C1DF7A0CB0059EDAA /* SHEmotionModel.m */; };
-		5CC7E8101DF7A2120059EDAA /* SHEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7E80F1DF7A2120059EDAA /* SHEmotionTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C59BD091F6F5861008C1FE5 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		5C59BD0A1F6F5861008C1FE5 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
+		5C59BD0C1F6F5861008C1FE5 /* SHEmotionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionModel.h; sourceTree = "<group>"; };
+		5C59BD0D1F6F5861008C1FE5 /* SHEmotionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionModel.m; sourceTree = "<group>"; };
+		5C59BD0F1F6F5861008C1FE5 /* SHEmotionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SHEmotionKeyboard.bundle; sourceTree = "<group>"; };
+		5C59BD111F6F5861008C1FE5 /* SHEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionKeyboard.h; sourceTree = "<group>"; };
+		5C59BD121F6F5861008C1FE5 /* SHEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionKeyboard.m; sourceTree = "<group>"; };
+		5C59BD131F6F5861008C1FE5 /* SHEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionTool.h; sourceTree = "<group>"; };
+		5C59BD141F6F5861008C1FE5 /* SHEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionTool.m; sourceTree = "<group>"; };
+		5C59BD1A1F6F588C008C1FE5 /* UIView+SHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SHExtension.h"; sourceTree = "<group>"; };
+		5C59BD1B1F6F588C008C1FE5 /* UIView+SHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHExtension.m"; sourceTree = "<group>"; };
 		5CC7E7DE1DF79C620059EDAA /* SHEmotionKeyboardUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHEmotionKeyboardUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC7E7E21DF79C620059EDAA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5CC7E7E41DF79C620059EDAA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,19 +43,6 @@
 		5CC7E7ED1DF79C620059EDAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CC7E7F01DF79C620059EDAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CC7E7F21DF79C620059EDAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CC7E7FC1DF79D960059EDAA /* SHEmotionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SHEmotionKeyboard.bundle; sourceTree = "<group>"; };
-		5CC7E7FE1DF79F070059EDAA /* SHEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionKeyboard.h; sourceTree = "<group>"; };
-		5CC7E7FF1DF79F070059EDAA /* SHEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionKeyboard.m; sourceTree = "<group>"; };
-		5CC7E8021DF79FA20059EDAA /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
-		5CC7E8031DF79FA20059EDAA /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
-		5CC7E8041DF79FA20059EDAA /* UIButton+RemoveHighlightEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+RemoveHighlightEffect.h"; sourceTree = "<group>"; };
-		5CC7E8051DF79FA20059EDAA /* UIButton+RemoveHighlightEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+RemoveHighlightEffect.m"; sourceTree = "<group>"; };
-		5CC7E8081DF7A0AB0059EDAA /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		5CC7E8091DF7A0AB0059EDAA /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
-		5CC7E80B1DF7A0CB0059EDAA /* SHEmotionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionModel.h; sourceTree = "<group>"; };
-		5CC7E80C1DF7A0CB0059EDAA /* SHEmotionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionModel.m; sourceTree = "<group>"; };
-		5CC7E80E1DF7A2120059EDAA /* SHEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionTool.h; sourceTree = "<group>"; };
-		5CC7E80F1DF7A2120059EDAA /* SHEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +56,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C59BD071F6F5861008C1FE5 /* SHEmotionKeyboard(表情键盘) */ = {
+			isa = PBXGroup;
+			children = (
+				5C59BD081F6F5861008C1FE5 /* Helper(帮助类) */,
+				5C59BD0B1F6F5861008C1FE5 /* Model(模型) */,
+				5C59BD0E1F6F5861008C1FE5 /* Resources(资源) */,
+				5C59BD101F6F5861008C1FE5 /* View(视图) */,
+			);
+			name = "SHEmotionKeyboard(表情键盘)";
+			path = "../../../../../../csh/Desktop/Git/SHEmotionKeyboard/SHEmotionKeyboardUI/SHEmotionKeyboardUI/SHEmotionKeyboard(表情键盘)";
+			sourceTree = "<group>";
+		};
+		5C59BD081F6F5861008C1FE5 /* Helper(帮助类) */ = {
+			isa = PBXGroup;
+			children = (
+				5C59BD1A1F6F588C008C1FE5 /* UIView+SHExtension.h */,
+				5C59BD1B1F6F588C008C1FE5 /* UIView+SHExtension.m */,
+				5C59BD091F6F5861008C1FE5 /* NSString+Emoji.h */,
+				5C59BD0A1F6F5861008C1FE5 /* NSString+Emoji.m */,
+			);
+			path = "Helper(帮助类)";
+			sourceTree = "<group>";
+		};
+		5C59BD0B1F6F5861008C1FE5 /* Model(模型) */ = {
+			isa = PBXGroup;
+			children = (
+				5C59BD0C1F6F5861008C1FE5 /* SHEmotionModel.h */,
+				5C59BD0D1F6F5861008C1FE5 /* SHEmotionModel.m */,
+			);
+			path = "Model(模型)";
+			sourceTree = "<group>";
+		};
+		5C59BD0E1F6F5861008C1FE5 /* Resources(资源) */ = {
+			isa = PBXGroup;
+			children = (
+				5C59BD0F1F6F5861008C1FE5 /* SHEmotionKeyboard.bundle */,
+			);
+			path = "Resources(资源)";
+			sourceTree = "<group>";
+		};
+		5C59BD101F6F5861008C1FE5 /* View(视图) */ = {
+			isa = PBXGroup;
+			children = (
+				5C59BD111F6F5861008C1FE5 /* SHEmotionKeyboard.h */,
+				5C59BD121F6F5861008C1FE5 /* SHEmotionKeyboard.m */,
+				5C59BD131F6F5861008C1FE5 /* SHEmotionTool.h */,
+				5C59BD141F6F5861008C1FE5 /* SHEmotionTool.m */,
+			);
+			path = "View(视图)";
+			sourceTree = "<group>";
+		};
 		5CC7E7D51DF79C620059EDAA = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +126,7 @@
 		5CC7E7E01DF79C620059EDAA /* SHEmotionKeyboardUI */ = {
 			isa = PBXGroup;
 			children = (
-				5CC7E7F81DF79C730059EDAA /* SHEmotionKeyboard */,
+				5C59BD071F6F5861008C1FE5 /* SHEmotionKeyboard(表情键盘) */,
 				5CC7E7E41DF79C620059EDAA /* AppDelegate.h */,
 				5CC7E7E51DF79C620059EDAA /* AppDelegate.m */,
 				5CC7E7E71DF79C620059EDAA /* ViewController.h */,
@@ -98,58 +146,6 @@
 				5CC7E7E21DF79C620059EDAA /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5CC7E7F81DF79C730059EDAA /* SHEmotionKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				5CC7E8011DF79F7B0059EDAA /* Helper(帮助类) */,
-				5CC7E7F91DF79D240059EDAA /* View(视图) */,
-				5CC7E7FA1DF79D240059EDAA /* Model(模型) */,
-				5CC7E7FB1DF79D240059EDAA /* Resources(资源) */,
-			);
-			path = SHEmotionKeyboard;
-			sourceTree = "<group>";
-		};
-		5CC7E7F91DF79D240059EDAA /* View(视图) */ = {
-			isa = PBXGroup;
-			children = (
-				5CC7E7FE1DF79F070059EDAA /* SHEmotionKeyboard.h */,
-				5CC7E7FF1DF79F070059EDAA /* SHEmotionKeyboard.m */,
-				5CC7E80E1DF7A2120059EDAA /* SHEmotionTool.h */,
-				5CC7E80F1DF7A2120059EDAA /* SHEmotionTool.m */,
-			);
-			path = "View(视图)";
-			sourceTree = "<group>";
-		};
-		5CC7E7FA1DF79D240059EDAA /* Model(模型) */ = {
-			isa = PBXGroup;
-			children = (
-				5CC7E80B1DF7A0CB0059EDAA /* SHEmotionModel.h */,
-				5CC7E80C1DF7A0CB0059EDAA /* SHEmotionModel.m */,
-			);
-			path = "Model(模型)";
-			sourceTree = "<group>";
-		};
-		5CC7E7FB1DF79D240059EDAA /* Resources(资源) */ = {
-			isa = PBXGroup;
-			children = (
-				5CC7E7FC1DF79D960059EDAA /* SHEmotionKeyboard.bundle */,
-			);
-			path = "Resources(资源)";
-			sourceTree = "<group>";
-		};
-		5CC7E8011DF79F7B0059EDAA /* Helper(帮助类) */ = {
-			isa = PBXGroup;
-			children = (
-				5CC7E8081DF7A0AB0059EDAA /* UIView+Extension.h */,
-				5CC7E8091DF7A0AB0059EDAA /* UIView+Extension.m */,
-				5CC7E8021DF79FA20059EDAA /* NSString+Emoji.h */,
-				5CC7E8031DF79FA20059EDAA /* NSString+Emoji.m */,
-				5CC7E8041DF79FA20059EDAA /* UIButton+RemoveHighlightEffect.h */,
-				5CC7E8051DF79FA20059EDAA /* UIButton+RemoveHighlightEffect.m */,
-			);
-			path = "Helper(帮助类)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,7 +210,7 @@
 				5CC7E7F11DF79C620059EDAA /* LaunchScreen.storyboard in Resources */,
 				5CC7E7EE1DF79C620059EDAA /* Assets.xcassets in Resources */,
 				5CC7E7EC1DF79C620059EDAA /* Main.storyboard in Resources */,
-				5CC7E7FD1DF79D960059EDAA /* SHEmotionKeyboard.bundle in Resources */,
+				5C59BD171F6F5861008C1FE5 /* SHEmotionKeyboard.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,15 +221,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CC7E8061DF79FA20059EDAA /* NSString+Emoji.m in Sources */,
+				5C59BD191F6F5861008C1FE5 /* SHEmotionTool.m in Sources */,
 				5CC7E7E91DF79C620059EDAA /* ViewController.m in Sources */,
-				5CC7E80D1DF7A0CB0059EDAA /* SHEmotionModel.m in Sources */,
-				5CC7E8001DF79F070059EDAA /* SHEmotionKeyboard.m in Sources */,
-				5CC7E80A1DF7A0AB0059EDAA /* UIView+Extension.m in Sources */,
 				5CC7E7E61DF79C620059EDAA /* AppDelegate.m in Sources */,
-				5CC7E8101DF7A2120059EDAA /* SHEmotionTool.m in Sources */,
-				5CC7E8071DF79FA20059EDAA /* UIButton+RemoveHighlightEffect.m in Sources */,
+				5C59BD2A1F6F588C008C1FE5 /* UIView+SHExtension.m in Sources */,
+				5C59BD151F6F5861008C1FE5 /* NSString+Emoji.m in Sources */,
+				5C59BD161F6F5861008C1FE5 /* SHEmotionModel.m in Sources */,
 				5CC7E7E31DF79C620059EDAA /* main.m in Sources */,
+				5C59BD181F6F5861008C1FE5 /* SHEmotionKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

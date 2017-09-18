@@ -1,8 +1,8 @@
 //
 //  NSString+Emoji.h
 //
-//  Created by apple on 14/8/9.
-//  Copyright (c) 2014年 jiang. All rights reserved.
+//  Created by CSH on 2016/12/7.
+//  Copyright © 2017年 CSH. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -23,4 +23,5 @@
  *  是否为emoji字符
  */
 - (BOOL)isEmoji;
+
 @end

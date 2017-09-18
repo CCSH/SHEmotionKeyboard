@@ -22,7 +22,7 @@
  @param text 内容
  @param model 表情模型
  */
-- (void)emoticonInputWithText:(NSString *)text Model:(SHEmotionModel *)model isSend:(BOOL)isSend;
+- (void)emoticonInputWithText:(NSString *)text model:(SHEmotionModel *)model isSend:(BOOL)isSend;
 
 /**
  表情键盘发送点击
@@ -39,6 +39,6 @@
 //下方按钮集合(SHEmoticonType)
 @property (nonatomic, strong) NSArray *toolBarArr;
 
-+ (instancetype)sharedSHEmotionKeyboard;
+- (void)reloadView;
 
 @end

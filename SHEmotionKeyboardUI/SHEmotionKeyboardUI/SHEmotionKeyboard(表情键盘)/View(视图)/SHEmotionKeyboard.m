@@ -7,9 +7,8 @@
 //
 
 #import "SHEmotionKeyboard.h"
-#import "UIView+Extension.h"
+#import "UIView+SHExtension.h"
 #import "SHEmotionModel.h"
-#import "UIButton+RemoveHighlightEffect.h"
 #import "SHEmotionTool.h"
 
 #define EmotionRGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
@@ -143,6 +142,10 @@
 
 @property (nonatomic, weak) id<SHEmotionToolBarDelegate> delegate;
 
+@property (nonatomic, strong) NSArray *toolArr;
+
+- (void)setup;
+
 @end
 
 @interface SHEmotionToolBar()
@@ -169,16 +172,6 @@
 //下方工具栏最多按钮个数
 #define ToolMaxNum 5
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        //设置
-        [self setup];
-    }
-    return self;
-}
-
 #pragma mark - 懒加载
 - (UIScrollView *)emotionScroll{
     
@@ -200,13 +193,11 @@
     //设置背景
     self.backgroundColor = [UIColor whiteColor];
     
-    SHEmotionKeyboard *emotionKeyboard = [SHEmotionKeyboard sharedSHEmotionKeyboard];
+    self.emotionScroll.contentSize = CGSizeMake(self.toolArr.count*self.width/ToolMaxNum, self.height);
     
-    self.emotionScroll.contentSize = CGSizeMake(emotionKeyboard.toolBarArr.count*self.width/ToolMaxNum, self.height);
-    
-    [emotionKeyboard.toolBarArr enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.toolArr enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        switch ([obj integerValue]) {
+        switch ([obj intValue]) {
             case SHEmoticonType_collect://收藏
             {
                 self.collectBtn = [self addChildBtnWithTitle:@"收藏" bgImageName:@"emoticon_keyboard_background" type:SHEmoticonType_collect Index:idx];
@@ -243,7 +234,11 @@
     [sendBtn addTarget:self action:@selector(sendBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:sendBtn];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(scrollviewLastPage:) name:@"scrollviewLastPage" object:nil];
+    //点击一下第一个按钮
+    if (self.toolArr.count) {
+        //默认点击第一个
+        [self childButtonClick:(UIButton *)[self viewWithTag:[self.toolArr[0] intValue]]];
+    }
 }
 
 - (UIButton *)addChildBtnWithTitle:(NSString *)title bgImageName:(NSString *)bgImageName type:(SHEmoticonType)type Index:(NSInteger)index{
@@ -274,26 +269,14 @@
     return button;
 }
 
-#pragma mark - SET
-- (void)setDelegate:(id<SHEmotionToolBarDelegate>)delegate{
-    _delegate = delegate;
-    
-    //代理设置完毕则点击一下第一个按钮
-    SHEmotionKeyboard *emotionKeyboard = [SHEmotionKeyboard sharedSHEmotionKeyboard];
-    if (emotionKeyboard.toolBarArr.count) {
-        //默认点击第一个
-        [self childButtonClick:(UIButton *)[self viewWithTag:[emotionKeyboard.toolBarArr[0] integerValue]]];
-    }
-}
-
 #pragma mark - scroll滑动最后一页
 - (void)scrollviewLastPage:(NSNotification *)notify{
     
 //    SHEmotionKeyboard *emotionKeyboard = [SHEmotionKeyboard sharedSHEmotionKeyboard];
 //    //为数组最后一个
-//    if ([notify.object intValue] == [[emotionKeyboard.toolBarArr lastObject] integerValue]) {
+//    if ([notify.object intValue] == [[emotionKeyboard.toolBarArr lastObject] intValue]) {
 //        //默认点击第一个
-//        [self childButtonClick:(UIButton *)[self viewWithTag:[emotionKeyboard.toolBarArr[0] integerValue]]];
+//        [self childButtonClick:(UIButton *)[self viewWithTag:[emotionKeyboard.toolBarArr[0] intValue]]];
 //    }
 //
 //    [self childButtonClick:(UIButton *)[self viewWithTag:[notify.object intValue]]];
@@ -451,7 +434,6 @@
 //记录scrollView的用户自己添加的子控件,因为直接调用 scrollView.subViews会出现问题(因为滚动条也算scrollView的子控件)
 @property (nonatomic, strong) NSMutableArray *scrollsubViews;
 
-
 @end
 
 @implementation SHEmotionListView
@@ -488,17 +470,15 @@
     if (!_pageControl) {
         //添加uipageControl
         UIPageControl *control = [[UIPageControl alloc] init];
-        
+        control.userInteractionEnabled = NO;
         [control setCurrentPageIndicatorTintColor:EmotionRGB(134, 134, 134)];
         [control setPageIndicatorTintColor:EmotionRGB(180, 180, 180)];
-        control.userInteractionEnabled = NO;
         
         [self addSubview:control];
         _pageControl = control;
     }
     return _pageControl;
 }
-
 
 - (void)layoutSubviews{
     [super layoutSubviews];
@@ -509,14 +489,11 @@
     
     self.pageControl.y = self.height - self.pageControl.height;
     
-    
     //设置scrollView
     self.scrollView.width = self.width;
     self.scrollView.height = self.pageControl.y;
     
-    
     //设置scrollView里面子控件的大小
-    
     for (int i=0; i<self.scrollsubViews.count; i++) {
         UIView *view = self.scrollsubViews[i];
         
@@ -578,20 +555,18 @@
     
 }
 
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //计算页数-->小数-->四舍五入
     CGFloat page = scrollView.contentOffset.x / scrollView.width;
     self.pageControl.currentPage = (int)(page + 0.5);
     
-    if (scrollView.contentSize.width < scrollView.contentOffset.x + scrollView.width) {
-        SHEmotionKeyboard *emotionKeyboard = [SHEmotionKeyboard sharedSHEmotionKeyboard];
-        if (_currentType == [[emotionKeyboard.toolBarArr lastObject] integerValue]) {
-            _currentType = 100;
-        }
-        [scrollView scrollRectToVisible:CGRectMake(0, 0, scrollView.width, scrollView.height) animated:NO];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"scrollviewLastPage" object:[NSString stringWithFormat:@"%d", (int)_currentType + 1]];
-    }
+//    if (scrollView.contentSize.width < scrollView.contentOffset.x + scrollView.width) {
+//        if (_currentType == [[self.toolArr lastObject] intValue]) {
+//            _currentType = 100;
+//        }
+//        [scrollView scrollRectToVisible:CGRectMake(0, 0, scrollView.width, scrollView.height) animated:NO];
+//        [[NSNotificationCenter defaultCenter]postNotificationName:@"scrollviewLastPage" object:[NSString stringWithFormat:@"%d", (int)_currentType + 1]];
+//    }
 }
 
 @end
@@ -625,21 +600,19 @@
 
 @implementation SHEmotionKeyboard
 
-+ (instancetype)sharedSHEmotionKeyboard{
-    static SHEmotionKeyboard *view;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        if (!view) {
-            view = [[self alloc]init];
-            //设置
-            [view setup];
-        }
-    });
-    return view;
-}
+//+ (instancetype)sharedSHEmotionKeyboard{
+//    static SHEmotionKeyboard *view;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        if (!view) {
+//            view = [[self alloc]init];
+//        }
+//    });
+//    return view;
+//}
 
 #pragma mark - 设置
-- (void)setup{
+- (void)reloadView{
     //设置颜色
     self.backgroundColor = EmotionRGB(243, 243, 247);
     
@@ -649,15 +622,12 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(emotionSendBtnSelected) name:@"EmotionSendBtnSelectedNoti" object:nil];
     //删除收藏图片通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(delectCollectImage) name:@"delectCollectImage" object:nil];
-}
-
-#pragma mark - SET
-- (void)setToolBarArr:(NSArray *)toolBarArr{
     
-    _toolBarArr = toolBarArr;
+    //初始化
+    self.toolBar = nil;
     
     //工具栏上方添加分割线
-    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, self.height - self.toolBar.height, self.width , 0.6)];
+    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, self.height - 37, self.width , 0.6)];
     line.backgroundColor = EmotionRGB(225, 225, 225);
     [self addSubview:line];
 }
@@ -669,6 +639,8 @@
         //设置下方工具栏
         _toolBar = [[SHEmotionToolBar alloc] initWithFrame:CGRectMake(0, 0, self.width, 37)];
         _toolBar.delegate = self;
+        _toolBar.toolArr = self.toolBarArr;
+        [_toolBar setup];
         [self addSubview:_toolBar];
     }
     return _toolBar;
@@ -746,7 +718,7 @@
     
     //如果有最近功能需要进行添加
     for (NSString *obj in self.toolBarArr) {
-        if ([obj integerValue] == SHEmoticonType_recent) {//如果有最近则进行添加
+        if ([obj intValue] == SHEmoticonType_recent) {//如果有最近则进行添加
             //添加到最近
             [SHEmotionTool addRecentEmotion:button.emotion];
             break;
@@ -754,19 +726,19 @@
     }
     
     //进行代理通知
-    if ([_delegate respondsToSelector:@selector(emoticonInputWithText:Model:isSend:)]) {
+    if ([_delegate respondsToSelector:@selector(emoticonInputWithText:model:isSend:)]) {
         
         switch (button.emotion.type) {
             case SHEmoticonType_gif://Gif
             case SHEmoticonType_collect://收藏
             {
                 //直接进行发送
-                [_delegate emoticonInputWithText:text Model:button.emotion isSend:YES];
+                [_delegate emoticonInputWithText:text model:button.emotion isSend:YES];
             }
                 break;
             default:
             {
-                [_delegate emoticonInputWithText:text Model:button.emotion isSend:NO];
+                [_delegate emoticonInputWithText:text model:button.emotion isSend:NO];
             }
                 break;
         }

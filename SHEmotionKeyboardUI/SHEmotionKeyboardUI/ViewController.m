@@ -68,7 +68,7 @@
 - (SHEmotionKeyboard *)emotionKeyboard{
     
     if (!_emotionKeyboard) {
-        _emotionKeyboard = [SHEmotionKeyboard sharedSHEmotionKeyboard];
+        _emotionKeyboard = [[SHEmotionKeyboard alloc]init];
          _emotionKeyboard.frame = CGRectMake(0, self.view.frame.size.height - 216, self.view.frame.size.width, 216);
     
         //配置表情键盘内容
@@ -76,6 +76,7 @@
         
         _emotionKeyboard.hidden = YES;
         _emotionKeyboard.delegate = self;
+        [_emotionKeyboard reloadView];
         [self.view addSubview:_emotionKeyboard];
     }
     return _emotionKeyboard;
@@ -86,11 +87,11 @@
 - (void)emoticonInputSend
 {
     //发送文字
-     self.message.attributedText =  [SHEmotionTool dealMessageWithStr:self.messageTextView.text];
+     self.message.attributedText = [SHEmotionTool dealMessageWithStr:self.messageTextView.text];
 }
 
 #pragma mark 获取表情对应字符
-- (void)emoticonInputWithText:(NSString *)text Model:(SHEmotionModel *)model isSend:(BOOL)isSend{
+- (void)emoticonInputWithText:(NSString *)text model:(SHEmotionModel *)model isSend:(BOOL)isSend{
     
     if (isSend) {//直接进行发送
 

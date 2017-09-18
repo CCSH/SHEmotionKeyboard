@@ -1,6 +1,6 @@
 //
-//  UIView+Extension.h
-//  CoolTalk
+//  UIView+SHExtension.h
+//  iOSAPP
 //
 //  Created by CSH on 16/7/5.
 //  Copyright © 2016年 CSH. All rights reserved.
@@ -10,7 +10,6 @@
 /**
  *  View的坐标拓展
  */
-
 @interface UIView (Extension)
 
 //X轴
@@ -34,10 +33,5 @@
 //位置(X、Y)
 @property (nonatomic, assign) CGPoint origin;
 
-
-/*
- * 寻找1像素的线(可以用来隐藏导航栏下面的黑线）
- */
-- (UIImageView *)findHairlineImageViewUnder;
 
 @end
