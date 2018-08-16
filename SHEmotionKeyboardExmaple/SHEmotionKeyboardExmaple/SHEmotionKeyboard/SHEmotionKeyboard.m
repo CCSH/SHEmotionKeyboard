@@ -38,7 +38,7 @@
         _deleteButton = [[UIButton alloc] init];
         
         //设置图片
-        [_deleteButton setImage:[SHEmotionTool emotionImageWithName:@"compose_photo_close"] forState:UIControlStateNormal];
+        [_deleteButton setImage:[SHEmotionTool emotionImageWithName:@"sh_emotion_close"] forState:UIControlStateNormal];
         //设置大小
         _deleteButton.size = [_deleteButton currentImage].size;
         
@@ -79,7 +79,7 @@
     
     //删除按钮
     if ([emotion.code isEqualToString:kSHEmotion_delete_code]) {
-        UIImage *image = [SHEmotionTool emotionImageWithName:@"compose_emotion_delete"];
+        UIImage *image = [SHEmotionTool emotionImageWithName:@"sh_emotion_delete"];
         [self setImage:image forState:UIControlStateNormal];
         return;
     }

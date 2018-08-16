@@ -18,9 +18,9 @@
 		5CF49FA82125803500B90BF5 /* SHEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FA32125803400B90BF5 /* SHEmotionKeyboard.m */; };
 		5CF49FA92125803500B90BF5 /* SHEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FA52125803400B90BF5 /* SHEmotionTool.m */; };
 		5CF49FAA2125803500B90BF5 /* SHEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FA72125803500B90BF5 /* SHEmotionAttachment.m */; };
-		5CF49FAE2125805400B90BF5 /* UIView+SHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FAC2125805400B90BF5 /* UIView+SHExtension.m */; };
 		5CF49FB12125806D00B90BF5 /* SHEmotionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FAF2125806D00B90BF5 /* SHEmotionModel.m */; };
 		5CF49FB421259E4A00B90BF5 /* SHEmotionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5CF49FB321259E4A00B90BF5 /* SHEmotionKeyboard.bundle */; };
+		5CF49FBB2125A0E100B90BF5 /* UIView+SHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,11 +63,11 @@
 		5CF49FA52125803400B90BF5 /* SHEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionTool.m; sourceTree = "<group>"; };
 		5CF49FA62125803500B90BF5 /* SHEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionKeyboard.h; sourceTree = "<group>"; };
 		5CF49FA72125803500B90BF5 /* SHEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionAttachment.m; sourceTree = "<group>"; };
-		5CF49FAC2125805400B90BF5 /* UIView+SHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHExtension.m"; sourceTree = "<group>"; };
-		5CF49FAD2125805400B90BF5 /* UIView+SHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SHExtension.h"; sourceTree = "<group>"; };
 		5CF49FAF2125806D00B90BF5 /* SHEmotionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionModel.m; sourceTree = "<group>"; };
 		5CF49FB02125806D00B90BF5 /* SHEmotionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionModel.h; sourceTree = "<group>"; };
 		5CF49FB321259E4A00B90BF5 /* SHEmotionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SHEmotionKeyboard.bundle; sourceTree = "<group>"; };
+		5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHExtension.m"; sourceTree = "<group>"; };
+		5CF49FBA2125A0E100B90BF5 /* UIView+SHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SHExtension.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 		5CC96B7221254CC100E78A40 /* SHEmotionKeyboardExmaple */ = {
 			isa = PBXGroup;
 			children = (
-				5CF49FAB2125805400B90BF5 /* Helper(帮助类) */,
+				5CF49FB82125A0E100B90BF5 /* Helper(帮助类) */,
 				5CC96BA521254D1500E78A40 /* SHEmotionKeyboard */,
 				5CC96B7321254CC100E78A40 /* AppDelegate.h */,
 				5CC96B7421254CC100E78A40 /* AppDelegate.m */,
@@ -167,14 +167,13 @@
 			path = SHEmotionKeyboard;
 			sourceTree = "<group>";
 		};
-		5CF49FAB2125805400B90BF5 /* Helper(帮助类) */ = {
+		5CF49FB82125A0E100B90BF5 /* Helper(帮助类) */ = {
 			isa = PBXGroup;
 			children = (
-				5CF49FAC2125805400B90BF5 /* UIView+SHExtension.m */,
-				5CF49FAD2125805400B90BF5 /* UIView+SHExtension.h */,
+				5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */,
+				5CF49FBA2125A0E100B90BF5 /* UIView+SHExtension.h */,
 			);
-			name = "Helper(帮助类)";
-			path = "SHEmotionKeyboard/Helper(帮助类)";
+			path = "Helper(帮助类)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,8 +309,8 @@
 			files = (
 				5CC96B7821254CC100E78A40 /* ViewController.m in Sources */,
 				5CF49FB12125806D00B90BF5 /* SHEmotionModel.m in Sources */,
-				5CF49FAE2125805400B90BF5 /* UIView+SHExtension.m in Sources */,
 				5CF49FA92125803500B90BF5 /* SHEmotionTool.m in Sources */,
+				5CF49FBB2125A0E100B90BF5 /* UIView+SHExtension.m in Sources */,
 				5CF49FAA2125803500B90BF5 /* SHEmotionAttachment.m in Sources */,
 				5CC96B8321254CC200E78A40 /* main.m in Sources */,
 				5CC96B7521254CC100E78A40 /* AppDelegate.m in Sources */,
