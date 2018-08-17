@@ -237,7 +237,7 @@
     [sendBtn setBackgroundColor:[UIColor orangeColor]];
     [sendBtn addTarget:self action:@selector(sendBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    sendBtn.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+    sendBtn.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [self addSubview:sendBtn];
     
     //点击一下第一个按钮
@@ -266,7 +266,7 @@
     //监听点击事件
     [button addTarget:self action:@selector(childButtonClick:) forControlEvents:UIControlEventTouchDown];
     
-    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     
     //添加到界面
     [self.emotionScroll addSubview:button];
@@ -518,6 +518,10 @@
 }
 
 - (void)setEmotions:(NSArray *)emotions{
+    
+    if (!emotions.count) {
+        return;
+    }
     
     _emotions = emotions;
     
