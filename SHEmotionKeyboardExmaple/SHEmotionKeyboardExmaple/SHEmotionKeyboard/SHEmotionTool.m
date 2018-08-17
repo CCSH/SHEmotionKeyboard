@@ -36,7 +36,7 @@ static NSMutableArray *_collectImages;
     
     NSString *bundlePath = [[NSBundle mainBundle]pathForResource:@"SHEmotionKeyboard.bundle" ofType:nil];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    NSString *path = [bundle pathForResource:[NSString stringWithFormat:@"%@/info.plist",name] ofType:@""];
+    NSString *path = [bundle pathForResource:[NSString stringWithFormat:@"%@/sh_emotion_info.plist",name] ofType:@""];
     
     NSArray *array = [NSArray arrayWithContentsOfFile:path];
     
@@ -93,7 +93,7 @@ static NSMutableArray *_collectImages;
         model.type = SHEmoticonType_collect;
         model.url = url;
         [_collectImages insertObject:model atIndex:0];
-
+        NSLog(@"%@",CollectImage_PAHT);
         [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:CollectImage_PAHT];
     });
 }
