@@ -106,7 +106,7 @@
                     break;
                 case SHEmoticonType_gif://Gif(默认路径为静态的)
                 {
-                    NSData *data = [NSData dataWithContentsOfFile:[kGif_Emoji_Path stringByAppendingString:model.gif]];
+                    NSData *data = [NSData dataWithContentsOfFile:model.path];
                     [weakSelf.otherMessage loadData:data MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL new]];
                 }
                     break;

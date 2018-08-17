@@ -22,25 +22,53 @@ static NSMutableArray *_collectImages;
     
     //拿出最近表情
     if (!_recentEmotions) {
-        _recentEmotions = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:Recentemotions_PAHT]];
+        _recentEmotions = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:kRecent_save_path]];
     }
     
     //拿出收藏表情
     if (!_collectImages) {
-        _collectImages = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:CollectImage_PAHT]];
+        _collectImages = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:kCollect_save_path]];
     }
 }
 
 #pragma mark - 获取plist路径下的数据
-+ (NSArray *)loadResourceWithName:(NSString *)name{
++ (NSArray *)loadResourceWithType:(SHEmoticonType)type{
     
-    NSString *bundlePath = [[NSBundle mainBundle]pathForResource:@"SHEmotionKeyboard.bundle" ofType:nil];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    NSString *path = [bundle pathForResource:[NSString stringWithFormat:@"%@/sh_emotion_info.plist",name] ofType:@""];
+    NSString *name;
+    
+    switch (type) {
+        case SHEmoticonType_custom://自定义
+        {
+            name = @"custom_emoji";
+        }
+            break;
+        case SHEmoticonType_gif://gif
+        {
+            name = @"gif_emoji";
+        }
+            break;
+        case SHEmoticonType_system://系统
+        {
+            name = @"system_emoji";
+        }
+            break;
+        default:
+            break;
+    }
+    
+    NSBundle *bundle = [NSBundle bundleWithPath:[self getEmotionBundle]];
+    
+    NSString *path = [bundle pathForResource:[NSString stringWithFormat:@"%@/sh_emotion_info",name] ofType:@"plist"];
     
     NSArray *array = [NSArray arrayWithContentsOfFile:path];
     
     return array;
+}
+
+#pragma mark 获取Bundle路径
++ (NSString *)getEmotionBundle{
+    
+    return [[NSBundle bundleForClass:[SHEmotionTool class]] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"];
 }
 
 #pragma mark - 表情键盘操作
@@ -51,13 +79,13 @@ static NSMutableArray *_collectImages;
     [_recentEmotions insertObject:emotion atIndex:0];
     
     //3.保存
-    [NSKeyedArchiver archiveRootObject:[_recentEmotions copy] toFile:Recentemotions_PAHT];
+    [NSKeyedArchiver archiveRootObject:[_recentEmotions copy] toFile:kRecent_save_path];
 }
 
 #pragma mark 添加图片到收藏
 + (void)addCollectImageWithUrl:(NSString *)url{
     
-    NSString *path = kCollect_Emoji_Path;
+    NSString *path = [SHEmotionTool getEmojiPathWithType:SHEmoticonType_collect];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]){
         
@@ -93,22 +121,46 @@ static NSMutableArray *_collectImages;
         model.type = SHEmoticonType_collect;
         model.url = url;
         [_collectImages insertObject:model atIndex:0];
-        NSLog(@"%@",CollectImage_PAHT);
-        [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:CollectImage_PAHT];
+        
+        [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:kCollect_save_path];
     });
 }
 #pragma mark 删除收藏图片
 + (void)delectCollectImageWithModel:(SHEmotionModel *)model{
     [_collectImages removeObject:model];
-    [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:CollectImage_PAHT];
+    [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:kCollect_save_path];
+    //发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"delectCollectImage" object:nil];
 }
 
-#pragma mark 获取其他资源图片
-+ (UIImage *)emotionImageWithName:(NSString *)name{
+#pragma mark - 获取资源图片
+//获取表情图片路径
++ (NSString *)getEmojiPathWithType:(SHEmoticonType)type{
     
-    NSString *bundlePath = [[NSBundle mainBundle]pathForResource:@"SHEmotionKeyboard.bundle" ofType:nil];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    switch (type) {
+        case SHEmoticonType_custom://自定义
+        {
+            return [NSString stringWithFormat:@"%@/custom_emoji/",[self getEmotionBundle]];
+        }
+            break;
+        case SHEmoticonType_gif://Gif
+        {
+            return [NSString stringWithFormat:@"%@/gif_emoji/",[self getEmotionBundle]];
+        }
+            break;
+        case SHEmoticonType_collect://收藏
+        {
+            return [NSString stringWithFormat:@"%@CollectImage/",DocumentPatch];
+        }
+            break;
+        default:
+            break;
+    }
+    return @"";
+}
+//获取其他资源图片
++ (UIImage *)emotionImageWithName:(NSString *)name{
+    NSBundle *bundle = [NSBundle bundleWithPath:[self getEmotionBundle]];
     
     NSString *path = [bundle pathForResource:[NSString stringWithFormat:@"other/%@@2x.png",name] ofType:@""];
     
@@ -130,7 +182,7 @@ static NSMutableArray *_collectImages;
 + (NSArray *)customEmotions{
     
     //读取默认表情
-    NSArray *array = [self loadResourceWithName:@"custom_emoji"];
+    NSArray *array = [self loadResourceWithType:SHEmoticonType_custom];
     NSMutableArray *arrayM = [NSMutableArray array];
     
     for (NSDictionary *dict in array) {
@@ -146,7 +198,7 @@ static NSMutableArray *_collectImages;
 #pragma mark 系统表情
 + (NSArray *)systemEmotions{
     //读取emoji表情
-    NSArray *array = [self loadResourceWithName:@"system_emoji"];
+    NSArray *array = [self loadResourceWithType:SHEmoticonType_system];
     
     NSMutableArray *arrayM = [NSMutableArray array];
     
@@ -160,10 +212,10 @@ static NSMutableArray *_collectImages;
     return arrayM;
 }
 
-#pragma mark gif表情
+#pragma mark gif表情x
 + (NSArray *)gifEmotions{
     //读取大表情
-    NSArray *array = [self loadResourceWithName:@"gif_emoji"];
+    NSArray *array = [self loadResourceWithType:SHEmoticonType_gif];
     
     NSMutableArray *arrayM = [NSMutableArray array];
     

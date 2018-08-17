@@ -17,12 +17,7 @@
     switch (emotion.type) {
         case SHEmoticonType_custom://自定义
         {
-            self.image = [UIImage imageWithContentsOfFile:[kCustom_Emoji_Path stringByAppendingString:emotion.png]];
-        }
-            break;
-        case SHEmoticonType_gif://Gif
-        {
-            self.image = [UIImage imageWithContentsOfFile:[kGif_Emoji_Path stringByAppendingString:emotion.png]];
+            self.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@%@",[SHEmotionTool getEmojiPathWithType:emotion.type],emotion.png]];
         }
             break;
         default:

@@ -85,19 +85,20 @@
     }
     //设置按钮内容
     switch (emotion.type) {
-        case SHEmoticonType_gif://GIF
+        case SHEmoticonType_custom://自定义
         {
-            emotion.path = [kGif_Emoji_Path stringByAppendingString:emotion.png];
+            emotion.path = [[SHEmotionTool getEmojiPathWithType:emotion.type] stringByAppendingString:emotion.png];
             //设置表情图片
             UIImage *image = [UIImage imageWithContentsOfFile:emotion.path];
             [self setImage:image forState:UIControlStateNormal];
         }
             break;
-        case SHEmoticonType_custom://自定义
+        case SHEmoticonType_gif://GIF
         {
-            emotion.path = [kCustom_Emoji_Path stringByAppendingString:emotion.png];
+            NSString *path = [SHEmotionTool getEmojiPathWithType:emotion.type];
+            emotion.path = [path stringByAppendingString:emotion.gif];
             //设置表情图片
-            UIImage *image = [UIImage imageWithContentsOfFile:emotion.path];
+            UIImage *image = [UIImage imageWithContentsOfFile:[path stringByAppendingString:emotion.png]];
             [self setImage:image forState:UIControlStateNormal];
         }
             break;
@@ -109,7 +110,8 @@
             break;
         case SHEmoticonType_collect://收藏
         {
-            emotion.path = [kCollect_Emoji_Path stringByAppendingPathComponent:emotion.png];
+            NSString *path = [SHEmotionTool getEmojiPathWithType:emotion.type];
+            emotion.path = [path stringByAppendingString:emotion.png];
             //设置图片
             [self setImage:[UIImage imageWithContentsOfFile:emotion.path] forState:UIControlStateNormal];
             
@@ -335,14 +337,9 @@
             self.indexPath = [NSIndexPath indexPathForRow:4 inSection:2];
         }
             break;
-        case SHEmoticonType_custom:case SHEmoticonType_system://系统、自定义 7*3
+        default://系统、自定义、最近 7*3
         {
             self.indexPath = [NSIndexPath indexPathForRow:7 inSection:3];
-        }
-            break;
-        default:
-        {
-            self.indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         }
             break;
     }
@@ -362,9 +359,8 @@
     
     //添加删除按钮
     if (emotions.count) {
-        SHEmotionModel *model = emotions.lastObject;
-        //添加删除按钮(系统、自定义)
-        if (model.type == SHEmoticonType_custom || model.type == SHEmoticonType_system) {
+        //添加删除按钮(系统、自定义、最近)
+        if (self.tag == SHEmoticonType_custom || self.tag == SHEmoticonType_system || self.tag == SHEmoticonType_recent) {
             
             //删除
             SHEmotionModel *deleteModel = [[SHEmotionModel alloc]init];
@@ -532,7 +528,7 @@
     [self.scrollsubViews removeAllObjects];
     
     //计算一页最多多少个表情
-    NSInteger pageMaxCount = 0;
+    NSInteger pageMaxCount = 1;
     
     switch (self.currentType) {
         case SHEmoticonType_gif:case SHEmoticonType_collect:
@@ -540,12 +536,10 @@
             pageMaxCount = 2*4;
         }
             break;
-        case SHEmoticonType_custom:case SHEmoticonType_system://需要一个删除按钮
+        default://需要一个删除按钮
         {
             pageMaxCount = 7*3 - 1;
         }
-            break;
-        default:
             break;
     }
     //(总数+删除)/每一页的个数
@@ -718,7 +712,7 @@
     }
     
     //如果有最近功能需要进行添加(系统、自定义)
-    if (button.emotion.type == SHEmoticonType_system && button.emotion.type == SHEmoticonType_custom) {
+    if (button.emotion.type == SHEmoticonType_system || button.emotion.type == SHEmoticonType_custom) {
         for (NSString *obj in self.toolBarArr) {
             if ([obj intValue] == SHEmoticonType_recent) {//如果有最近则进行添加
                 //添加到最近

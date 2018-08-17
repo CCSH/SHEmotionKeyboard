@@ -14,17 +14,10 @@
 #define DocumentPatch [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 
 //最近表情的路径
-#define Recentemotions_PAHT [DocumentPatch stringByAppendingPathComponent:@"recentemotions.archive"]
+#define kRecent_save_path [DocumentPatch stringByAppendingPathComponent:@"recentemotions.archive"]
 
 //收藏图片的路径
-#define CollectImage_PAHT [DocumentPatch stringByAppendingPathComponent:@"CollectImage.archive"]
-
-//收藏图片拼接路径
-#define kCollect_Emoji_Path [DocumentPatch stringByAppendingPathComponent:@"CollectImage/"]
-//自定义表情拼接路径
-#define kCustom_Emoji_Path [NSString stringWithFormat:@"%@/custom_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]
-//Gif表情拼接路径
-#define kGif_Emoji_Path [NSString stringWithFormat:@"%@/gif_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]
+#define kCollect_save_path [DocumentPatch stringByAppendingPathComponent:@"collectemotions.archive"]
 
 /**
  表情键盘工具类
@@ -40,6 +33,9 @@
 //删除收藏图片
 + (void)delectCollectImageWithModel:(SHEmotionModel *)model;
 
+#pragma mark - 获取资源图片
+//获取表情图片路径
++ (NSString *)getEmojiPathWithType:(SHEmoticonType)type;
 //获取其他资源图片
 + (UIImage *)emotionImageWithName:(NSString *)name;
 
