@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C3D231A2126564300E46D76 /* SHEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D23112126564300E46D76 /* SHEmotionAttachment.m */; };
+		5C3D231B2126564300E46D76 /* SHEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D23132126564300E46D76 /* SHEmotionKeyboard.m */; };
+		5C3D231C2126564300E46D76 /* SHEmotionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C3D23152126564300E46D76 /* SHEmotionKeyboard.bundle */; };
+		5C3D231D2126564300E46D76 /* SHEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D23162126564300E46D76 /* SHEmotionTool.m */; };
+		5C3D231E2126564300E46D76 /* SHEmotionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D23182126564300E46D76 /* SHEmotionModel.m */; };
 		5CC96B7521254CC100E78A40 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B7421254CC100E78A40 /* AppDelegate.m */; };
 		5CC96B7821254CC100E78A40 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B7721254CC100E78A40 /* ViewController.m */; };
 		5CC96B7B21254CC100E78A40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CC96B7921254CC100E78A40 /* Main.storyboard */; };
@@ -15,11 +20,6 @@
 		5CC96B8321254CC200E78A40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B8221254CC200E78A40 /* main.m */; };
 		5CC96B8D21254CC200E78A40 /* SHEmotionKeyboardExmapleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B8C21254CC200E78A40 /* SHEmotionKeyboardExmapleTests.m */; };
 		5CC96B9821254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B9721254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.m */; };
-		5CF49FA82125803500B90BF5 /* SHEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FA32125803400B90BF5 /* SHEmotionKeyboard.m */; };
-		5CF49FA92125803500B90BF5 /* SHEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FA52125803400B90BF5 /* SHEmotionTool.m */; };
-		5CF49FAA2125803500B90BF5 /* SHEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FA72125803500B90BF5 /* SHEmotionAttachment.m */; };
-		5CF49FB12125806D00B90BF5 /* SHEmotionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FAF2125806D00B90BF5 /* SHEmotionModel.m */; };
-		5CF49FB421259E4A00B90BF5 /* SHEmotionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5CF49FB321259E4A00B90BF5 /* SHEmotionKeyboard.bundle */; };
 		5CF49FBB2125A0E100B90BF5 /* UIView+SHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C3D23112126564300E46D76 /* SHEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionAttachment.m; sourceTree = "<group>"; };
+		5C3D23122126564300E46D76 /* SHEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionTool.h; sourceTree = "<group>"; };
+		5C3D23132126564300E46D76 /* SHEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionKeyboard.m; sourceTree = "<group>"; };
+		5C3D23142126564300E46D76 /* SHEmotionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionModel.h; sourceTree = "<group>"; };
+		5C3D23152126564300E46D76 /* SHEmotionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SHEmotionKeyboard.bundle; sourceTree = "<group>"; };
+		5C3D23162126564300E46D76 /* SHEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionTool.m; sourceTree = "<group>"; };
+		5C3D23172126564300E46D76 /* SHEmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionAttachment.h; sourceTree = "<group>"; };
+		5C3D23182126564300E46D76 /* SHEmotionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionModel.m; sourceTree = "<group>"; };
+		5C3D23192126564300E46D76 /* SHEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionKeyboard.h; sourceTree = "<group>"; };
 		5CC96B7021254CC100E78A40 /* SHEmotionKeyboardExmaple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHEmotionKeyboardExmaple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC96B7321254CC100E78A40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5CC96B7421254CC100E78A40 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,15 +66,6 @@
 		5CC96B9321254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHEmotionKeyboardExmapleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC96B9721254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHEmotionKeyboardExmapleUITests.m; sourceTree = "<group>"; };
 		5CC96B9921254CC200E78A40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CF49FA22125803400B90BF5 /* SHEmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionAttachment.h; sourceTree = "<group>"; };
-		5CF49FA32125803400B90BF5 /* SHEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionKeyboard.m; sourceTree = "<group>"; };
-		5CF49FA42125803400B90BF5 /* SHEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionTool.h; sourceTree = "<group>"; };
-		5CF49FA52125803400B90BF5 /* SHEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionTool.m; sourceTree = "<group>"; };
-		5CF49FA62125803500B90BF5 /* SHEmotionKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionKeyboard.h; sourceTree = "<group>"; };
-		5CF49FA72125803500B90BF5 /* SHEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionAttachment.m; sourceTree = "<group>"; };
-		5CF49FAF2125806D00B90BF5 /* SHEmotionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionModel.m; sourceTree = "<group>"; };
-		5CF49FB02125806D00B90BF5 /* SHEmotionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionModel.h; sourceTree = "<group>"; };
-		5CF49FB321259E4A00B90BF5 /* SHEmotionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SHEmotionKeyboard.bundle; sourceTree = "<group>"; };
 		5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHExtension.m"; sourceTree = "<group>"; };
 		5CF49FBA2125A0E100B90BF5 /* UIView+SHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SHExtension.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +95,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C3D23102126564300E46D76 /* SHEmotionKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5C3D23192126564300E46D76 /* SHEmotionKeyboard.h */,
+				5C3D23132126564300E46D76 /* SHEmotionKeyboard.m */,
+				5C3D23122126564300E46D76 /* SHEmotionTool.h */,
+				5C3D23162126564300E46D76 /* SHEmotionTool.m */,
+				5C3D23172126564300E46D76 /* SHEmotionAttachment.h */,
+				5C3D23112126564300E46D76 /* SHEmotionAttachment.m */,
+				5C3D23142126564300E46D76 /* SHEmotionModel.h */,
+				5C3D23182126564300E46D76 /* SHEmotionModel.m */,
+				5C3D23152126564300E46D76 /* SHEmotionKeyboard.bundle */,
+			);
+			path = SHEmotionKeyboard;
+			sourceTree = "<group>";
+		};
 		5CC96B6721254CC100E78A40 = {
 			isa = PBXGroup;
 			children = (
@@ -118,8 +134,8 @@
 		5CC96B7221254CC100E78A40 /* SHEmotionKeyboardExmaple */ = {
 			isa = PBXGroup;
 			children = (
+				5C3D23102126564300E46D76 /* SHEmotionKeyboard */,
 				5CF49FB82125A0E100B90BF5 /* Helper(帮助类) */,
-				5CC96BA521254D1500E78A40 /* SHEmotionKeyboard */,
 				5CC96B7321254CC100E78A40 /* AppDelegate.h */,
 				5CC96B7421254CC100E78A40 /* AppDelegate.m */,
 				5CC96B7621254CC100E78A40 /* ViewController.h */,
@@ -149,22 +165,6 @@
 				5CC96B9921254CC200E78A40 /* Info.plist */,
 			);
 			path = SHEmotionKeyboardExmapleUITests;
-			sourceTree = "<group>";
-		};
-		5CC96BA521254D1500E78A40 /* SHEmotionKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				5CF49FB321259E4A00B90BF5 /* SHEmotionKeyboard.bundle */,
-				5CF49FA22125803400B90BF5 /* SHEmotionAttachment.h */,
-				5CF49FA72125803500B90BF5 /* SHEmotionAttachment.m */,
-				5CF49FA62125803500B90BF5 /* SHEmotionKeyboard.h */,
-				5CF49FA32125803400B90BF5 /* SHEmotionKeyboard.m */,
-				5CF49FA42125803400B90BF5 /* SHEmotionTool.h */,
-				5CF49FA52125803400B90BF5 /* SHEmotionTool.m */,
-				5CF49FB02125806D00B90BF5 /* SHEmotionModel.h */,
-				5CF49FAF2125806D00B90BF5 /* SHEmotionModel.m */,
-			);
-			path = SHEmotionKeyboard;
 			sourceTree = "<group>";
 		};
 		5CF49FB82125A0E100B90BF5 /* Helper(帮助类) */ = {
@@ -282,7 +282,7 @@
 				5CC96B8021254CC200E78A40 /* LaunchScreen.storyboard in Resources */,
 				5CC96B7D21254CC200E78A40 /* Assets.xcassets in Resources */,
 				5CC96B7B21254CC100E78A40 /* Main.storyboard in Resources */,
-				5CF49FB421259E4A00B90BF5 /* SHEmotionKeyboard.bundle in Resources */,
+				5C3D231C2126564300E46D76 /* SHEmotionKeyboard.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,14 +307,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C3D231D2126564300E46D76 /* SHEmotionTool.m in Sources */,
 				5CC96B7821254CC100E78A40 /* ViewController.m in Sources */,
-				5CF49FB12125806D00B90BF5 /* SHEmotionModel.m in Sources */,
-				5CF49FA92125803500B90BF5 /* SHEmotionTool.m in Sources */,
+				5C3D231E2126564300E46D76 /* SHEmotionModel.m in Sources */,
 				5CF49FBB2125A0E100B90BF5 /* UIView+SHExtension.m in Sources */,
-				5CF49FAA2125803500B90BF5 /* SHEmotionAttachment.m in Sources */,
 				5CC96B8321254CC200E78A40 /* main.m in Sources */,
+				5C3D231A2126564300E46D76 /* SHEmotionAttachment.m in Sources */,
 				5CC96B7521254CC100E78A40 /* AppDelegate.m in Sources */,
-				5CF49FA82125803500B90BF5 /* SHEmotionKeyboard.m in Sources */,
+				5C3D231B2126564300E46D76 /* SHEmotionKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

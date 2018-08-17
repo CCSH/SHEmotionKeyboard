@@ -1,6 +1,6 @@
 //
 //  SHEmotionKeyboard.h
-//  SHEmotionKeyboardUI
+//  SHEmotionKeyboard
 //
 //  Created by CSH on 2016/12/7.
 //  Copyright © 2016年 CSH. All rights reserved.

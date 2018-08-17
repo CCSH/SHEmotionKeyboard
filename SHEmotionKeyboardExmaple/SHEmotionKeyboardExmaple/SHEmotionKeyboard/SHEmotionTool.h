@@ -1,6 +1,6 @@
 //
 //  SHEmotionTool.h
-//  SHEmotionKeyboardUI
+//  SHEmotionKeyboard
 //
 //  Created by CSH on 2016/12/7.
 //  Copyright © 2016年 CSH. All rights reserved.
@@ -25,9 +25,6 @@
 #define kCustom_Emoji_Path [NSString stringWithFormat:@"%@/custom_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]
 //Gif表情拼接路径
 #define kGif_Emoji_Path [NSString stringWithFormat:@"%@/gif_emoji/",[[NSBundle mainBundle] pathForResource:@"SHEmotionKeyboard" ofType:@"bundle"]]
-
-//字体大小
-#define kEmoji_Font [UIFont systemFontOfSize:14]
 
 /**
  表情键盘工具类
@@ -60,11 +57,11 @@
 
 #pragma mark - 字符串处理
 //字符串处理 model -> att
-+ (NSAttributedString *)getAttWithEmotion:(SHEmotionModel *)emotion;
++ (NSAttributedString *)getAttWithEmotion:(SHEmotionModel *)emotion font:(UIFont *)font;
 //字符串处理 str -> model
 + (SHEmotionModel *)getEmotionWithCode:(NSString *)code;
 //字符串处理 str -> att
-+ (NSAttributedString *)getAttWithStr:(NSString *)str;
++ (NSAttributedString *)getAttWithStr:(NSString *)str font:(UIFont *)font;
 //字符串处理 att -> str
 + (NSString *)getRealStrWithAtt:(NSAttributedString *)att;
 

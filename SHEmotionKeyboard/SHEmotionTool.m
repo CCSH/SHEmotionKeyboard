@@ -1,6 +1,6 @@
 //
 //  SHEmotionTool.m
-//  SHEmotionKeyboardUI
+//  SHEmotionKeyboard
 //
 //  Created by CSH on 2016/12/7.
 //  Copyright © 2016年 CSH. All rights reserved.
@@ -66,26 +66,35 @@ static NSMutableArray *_collectImages;
     path = [path stringByAppendingPathComponent:url.lastPathComponent];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-        BOOL result = [data writeToFile:path atomically:YES];
-        if (result) {
-            NSLog(@"添加收藏成功");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                SHEmotionModel *model = [[SHEmotionModel alloc]init];
-                model.code = [NSString stringWithFormat:@"[%@]",url.lastPathComponent];
-                model.png = url.lastPathComponent;
-                model.type = SHEmoticonType_collect;
-                model.url = url;
-                
+        
+        BOOL isHave = NO;
+        //是否存在
+        for (SHEmotionModel *model in _collectImages) {
+            if ([model.url isEqualToString:url]) {//已经存在
                 [_collectImages removeObject:model];
-                [_collectImages insertObject:model atIndex:0];
-                
-                [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:CollectImage_PAHT];
-            });
-        }else{
-            NSLog(@"添加收藏失败");
+                isHave = YES;
+                break;
+            }
         }
+        //已经存在的话就不用下载了
+        if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+            BOOL result = [data writeToFile:path atomically:YES];
+            if (!result) {
+                NSLog(@"添加收藏失败");
+                return ;
+            }
+        }
+        
+        //添加
+        SHEmotionModel *model = [[SHEmotionModel alloc]init];
+        model.code = [NSString stringWithFormat:@"[%@]",url.lastPathComponent];
+        model.png = url.lastPathComponent;
+        model.type = SHEmoticonType_collect;
+        model.url = url;
+        [_collectImages insertObject:model atIndex:0];
+
+        [NSKeyedArchiver archiveRootObject:[_collectImages copy] toFile:CollectImage_PAHT];
     });
 }
 #pragma mark 删除收藏图片
@@ -170,7 +179,7 @@ static NSMutableArray *_collectImages;
 
 #pragma mark - 字符串处理
 #pragma mark model -> att
-+ (NSAttributedString *)getAttWithEmotion:(SHEmotionModel *)emotion{
++ (NSAttributedString *)getAttWithEmotion:(SHEmotionModel *)emotion font:(UIFont *)font{
     
     SHEmotionAttachment *textAttachment = [[SHEmotionAttachment alloc]init];//添加附件,图片
     textAttachment.emotion = emotion;
@@ -180,7 +189,7 @@ static NSMutableArray *_collectImages;
         {
             textAttachment.emotion = emotion;
             //调整位置
-            CGFloat height = kEmoji_Font.lineHeight;
+            CGFloat height = font.lineHeight;
             textAttachment.bounds = CGRectMake(0, -3, height, height);
             
             return [NSAttributedString attributedStringWithAttachment:textAttachment];
@@ -197,7 +206,7 @@ static NSMutableArray *_collectImages;
     return nil;
 }
 
-//字符串处理 str -> model
+#pragma mark str -> model
 + (SHEmotionModel *)getEmotionWithCode:(NSString *)code{
     
     //遍历自定义表情
@@ -218,8 +227,8 @@ static NSMutableArray *_collectImages;
     return nil;
 }
 
-//字符串处理 str -> att
-+ (NSAttributedString *)getAttWithStr:(NSString *)str{
+#pragma mark str -> att
++ (NSAttributedString *)getAttWithStr:(NSString *)str font:(UIFont *)font{
     
     NSString *zhengze = @"\\[[^\\[|^\\]]+\\]";
     //正则表达式
@@ -233,7 +242,7 @@ static NSMutableArray *_collectImages;
     [faceArr addObjectsFromArray:[SHEmotionTool customEmotions]];
     [faceArr addObjectsFromArray:[SHEmotionTool gifEmotions]];
     
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str attributes:@{NSFontAttributeName:font}];
     
     //如果有多个表情图，必须从后往前替换，因为替换后Range就不准确了
     for (NSInteger j = (zhengzeArr.count - 1); j >= 0; j--) {
@@ -248,8 +257,9 @@ static NSMutableArray *_collectImages;
             if ([[str substringWithRange:result.range] isEqualToString:obj.code]){
                 
                 SHEmotionModel *model = [SHEmotionTool getEmotionWithCode:obj.code];
+
                 //替换未图片附件
-                [attStr replaceCharactersInRange:result.range withAttributedString:[self getAttWithEmotion:model]];
+                [attStr replaceCharactersInRange:result.range withAttributedString:[self getAttWithEmotion:model font:font]];
                 
                 *stop = YES;
             }
@@ -259,7 +269,7 @@ static NSMutableArray *_collectImages;
     return attStr;
 }
 
-//字符串处理 att -> str
+#pragma mark att -> str
 + (NSString *)getRealStrWithAtt:(NSAttributedString *)att{
     
     NSMutableString *string = [NSMutableString string];

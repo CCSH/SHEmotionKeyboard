@@ -13,6 +13,7 @@
 @interface ViewController ()<UITextViewDelegate>
     
 @property (weak, nonatomic) IBOutlet UILabel *message;
+@property (weak, nonatomic) IBOutlet UILabel *realMessage;
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet UITextField *imageTextFile;
@@ -39,7 +40,8 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]) {//点击了发送
         //发送文字
-        self.message.text =  [SHEmotionTool getRealStrWithAtt:self.messageTextView.attributedText];
+        self.realMessage.text = [SHEmotionTool getRealStrWithAtt:self.messageTextView.attributedText];
+        self.message.attributedText = [SHEmotionTool getAttWithStr:self.realMessage.text font:self.message.font];
         return NO;
     }
     return YES;
@@ -80,15 +82,17 @@
                                         @(SHEmoticonType_collect),
                                         @(SHEmoticonType_recent)];
         
+        __weak typeof(self) weakSelf = self;
         //点击了发送
         _emotionKeyboard.sendEmotionBlock = ^{
             //发送文字
-            self.message.text = [SHEmotionTool getRealStrWithAtt:self.messageTextView.attributedText];
+            weakSelf.realMessage.text = [SHEmotionTool getRealStrWithAtt:weakSelf.messageTextView.attributedText];
+            weakSelf.message.attributedText = [SHEmotionTool getAttWithStr:weakSelf.realMessage.text font:weakSelf.message.font];
         };
         
         //点击了删除
         _emotionKeyboard.deleteEmotionBlock = ^{
-            [self.messageTextView deleteBackward];
+            [weakSelf.messageTextView deleteBackward];
         };
         
         //表请点击
@@ -97,31 +101,31 @@
                 case SHEmoticonType_collect://收藏(可用Url、也可以用路径)
                 {
                     NSData *data = [NSData dataWithContentsOfFile:model.path];
-                    [self.otherMessage loadData:data MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL new]];
+                    [weakSelf.otherMessage loadData:data MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL new]];
                 }
                     break;
                 case SHEmoticonType_gif://Gif(默认路径为静态的)
                 {
                     NSData *data = [NSData dataWithContentsOfFile:[kGif_Emoji_Path stringByAppendingString:model.gif]];
-                    [self.otherMessage loadData:data MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL new]];
+                    [weakSelf.otherMessage loadData:data MIMEType:@"image/gif" textEncodingName:@"" baseURL:[NSURL new]];
                 }
                     break;
                 default:
                 {
                     //添加到输入框
-                    NSInteger selectIndex = self.messageTextView.selectedRange.location;
+                    NSInteger selectIndex = weakSelf.messageTextView.selectedRange.location;
                     
-                    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithAttributedString:self.messageTextView.attributedText];
+                    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithAttributedString:weakSelf.messageTextView.attributedText];
                     
-                    NSAttributedString *att = [SHEmotionTool getAttWithEmotion:model];
+                    NSAttributedString *att = [SHEmotionTool getAttWithEmotion:model font:weakSelf.messageTextView.font];
                     //插入表情到光标位置
                     [attr insertAttributedString:att atIndex:selectIndex];
                     //设置字体
-                    [attr addAttribute:NSFontAttributeName value:self.messageTextView.font range:NSMakeRange(0, attr.length)];
+                    [attr addAttribute:NSFontAttributeName value:weakSelf.messageTextView.font range:NSMakeRange(0, attr.length)];
                     //放到文本框
-                    self.messageTextView.attributedText = attr;
+                    weakSelf.messageTextView.attributedText = attr;
                     //移动光标位置
-                    self.messageTextView.selectedRange = NSMakeRange(selectIndex + att.length,0);
+                    weakSelf.messageTextView.selectedRange = NSMakeRange(selectIndex + att.length,0);
                 }
                     break;
             }

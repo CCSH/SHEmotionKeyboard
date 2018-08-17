@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
     s.name         = "SHEmotionKeyboard"
     s.version      = "0.0.1"
-    s.summary      = "A short description of SHEmotionKeyboard."
+    s.summary      = "表情键盘"
     s.license      = 'MIT'
     s.authors      = {'CSH' => '624089195@qq.com'}
     s.platform     = :ios, '6.0'
