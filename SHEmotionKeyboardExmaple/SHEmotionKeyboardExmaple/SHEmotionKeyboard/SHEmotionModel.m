@@ -88,21 +88,5 @@ iKY_AUTO_SERIALIZATION
     
     return arrayM;
 }
-//
-///**
-// *  告诉系统当前对象与系统传入进来的对象是否是同一个对象
-// *
-// *  @param object <#object description#>
-// *
-// *  @return <#return value description#>
-// */
-//- (BOOL)isEqual:(SHEmotionModel *)object{
-//    
-//    if ([self.code isEqualToString:object.code]) {
-//        return YES;
-//    }else{
-//        return NO;
-//    }
-//}
 
 @end
