@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
     s.source_files = 'SHEmotionKeyboard/**/*.{h,m}'
     s.requires_arc = true
     s.resource     = 'SHEmotionKeyboard/SHEmotionKeyboard.bundle'
-    s.dependency pod 'UIView+SHExtension'
+    s.dependency     'UIView+SHExtension','~> 0.0.1'
 # s.framework  = "SomeFramework"
 # s.frameworks = "SomeFramework", "AnotherFramework"
 # s.library   = "iconv"
