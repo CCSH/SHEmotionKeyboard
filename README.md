@@ -1,5 +1,5 @@
 # SHEmotionKeyboard
-# 使用 Cocoapods 导入
+# 使用 pod 导入
 ```
 pod 'SHEmotionKeyboard'
 ```
