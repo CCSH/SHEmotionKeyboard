@@ -10,5 +10,6 @@ pod 'SHEmotionKeyboard'
 - [x] gif
 - [x] 添加收藏
 - [x] 最近表情
+- [x] 字符串与富文本互相转换
 
 ![image](https://github.com/CCSH/SHEmotionKeyboard/blob/master/QQ20170801-132029-HD.gif)
