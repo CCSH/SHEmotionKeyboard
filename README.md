@@ -1,6 +1,6 @@
 # SHEmotionKeyboard
 # 使用 pod 导入
-```
+```objc
 pod 'SHEmotionKeyboard'
 ```
 # 表情键盘支持
