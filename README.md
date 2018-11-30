@@ -1,4 +1,5 @@
 # SHEmotionKeyboard
+> 使用中如果有其他问题可以[`告诉我`](https://github.com/CCSH/SHEmotionKeyboard/issues/new)
 # 使用 pod 导入
 ```objc
 pod 'SHEmotionKeyboard'
