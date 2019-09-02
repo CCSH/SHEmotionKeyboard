@@ -9,8 +9,10 @@ pod 'SHEmotionKeyboard'
 - [x] 自定义表情
 - [x] 系统表情
 - [x] gif
-- [x] 添加收藏
 - [x] 最近表情
+- [x] 添加与删除收藏表情
+- [x] 适配全面屏
 - [x] 字符串与富文本互相转换
+
 
 ![image](https://github.com/CCSH/SHEmotionKeyboard/blob/master/QQ20170801-132029-HD.gif)
