@@ -34,16 +34,23 @@
     
     self.messageTextView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
-    self.imageTextFile.text = @"http://www.qqma.com/imgpic2/cpimagenew/2018/4/5/6e1de60ce43d4bf4b9671d7661024e7a.jpg";
+    self.imageTextFile.text = @"http://pic26.nipic.com/20121221/9252150_142515375000_2.jpg";
+
 }
     
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]) {//点击了发送
-        //发送文字
+        //获取实际内容
         self.realMessage.text = [SHEmotionTool getRealStrWithAtt:self.messageTextView.attributedText];
+        //获取显示内容
         self.message.attributedText = [SHEmotionTool getAttWithStr:self.realMessage.text font:self.message.font];
         return NO;
     }
+    return YES;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    self.emotionKeyboard.index = SHEmoticonType_custom;
     return YES;
 }
     
@@ -67,7 +74,7 @@
     }else{
         self.imageTextFile.placeholder = @"别捣乱!!请输入要收藏的图片网址";
     }
-    self.imageTextFile.text = nil;
+//    self.imageTextFile.text = nil;
     
 }
     
@@ -76,11 +83,11 @@
     if (!_emotionKeyboard) {
         _emotionKeyboard = [[SHEmotionKeyboard alloc]init];
         //配置表情键盘内容
-        _emotionKeyboard.toolBarArr = @[@(SHEmoticonType_custom),
+        _emotionKeyboard.toolBarArr = @[@(SHEmoticonType_recent),
+                                        @(SHEmoticonType_custom),
                                         @(SHEmoticonType_system),
                                         @(SHEmoticonType_gif),
-                                        @(SHEmoticonType_collect),
-                                        @(SHEmoticonType_recent)];
+                                        @(SHEmoticonType_collect)];
         
         __weak typeof(self) weakSelf = self;
         //点击了发送
@@ -125,7 +132,7 @@
                     //放到文本框
                     weakSelf.messageTextView.attributedText = attr;
                     //移动光标位置
-                    weakSelf.messageTextView.selectedRange = NSMakeRange(selectIndex + att.length,0);
+                    weakSelf.messageTextView.selectedRange = NSMakeRange(selectIndex + att.length, 0);
                 }
                     break;
             }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "SHEmotionKeyboard"
-    s.version      = "1.0.3"
+    s.version      = "1.1.0"
     s.summary      = "表情键盘"
     s.license      = "MIT"
     s.authors      = { "CSH" => "624089195@qq.com" }
@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
     s.source_files = "SHEmotionKeyboard/*.{h,m}"
     s.resource     = "SHEmotionKeyboard/SHEmotionKeyboard.bundle"
     s.requires_arc = true
-    s.dependency    "UIView+SHExtension","0.0.1"
+    s.dependency    "SHExtension/UIView"
 end
