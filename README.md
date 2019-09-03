@@ -1,7 +1,8 @@
 # SHEmotionKeyboard
 > 使用中如果有其他问题可以[`告诉我`](https://github.com/CCSH/SHEmotionKeyboard/issues/new)
 # 使用 pod 导入
-```objc
+[![Pod Version](http://img.shields.io/cocoapods/v/SHEmotionKeyboard.svg?style=flat)](http://cocoadocs.org/docsets/SHEmotionKeyboard/)
+```
 pod 'SHEmotionKeyboard'
 ```
 # 表情键盘支持
