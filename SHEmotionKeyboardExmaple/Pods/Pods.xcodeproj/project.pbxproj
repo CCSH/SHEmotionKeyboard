@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D7DB50516418427561FA6D968524975 /* SHExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F8C923AB063E8903223E0C9967B4F2 /* SHExtension-dummy.m */; };
+		0F9216054D502BD1DD730D722E27839F /* Pods-SHEmotionKeyboardExmaple-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13A3F2AA943B118600B5A8B82EFB4324 /* Pods-SHEmotionKeyboardExmaple-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13E6EF8298301EA87AC1F4CA7BE5CE2A /* UIView+SHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA137530E0FD492FE7A2056DF3861A5 /* UIView+SHExtension.m */; };
+		7000BCD1CC4DA603691F15EC42CB08A1 /* SHExtension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 47025E838D4CB65BFDF8705E2108D889 /* SHExtension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7D5C97EE9B5936B078730F04C91349FE /* Pods-SHEmotionKeyboardExmaple-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 553EBFDFD6C19EEC7445DD2ABB97E994 /* Pods-SHEmotionKeyboardExmaple-dummy.m */; };
+		872319ED3D50861B4EAF7102F23738B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		D450E60DFDC817C0F7F6EB344054AFE5 /* UIView+SHExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 06FA59BF74D818666B47C85C274C7E1D /* UIView+SHExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6FDEAF1BA8795CA44E6C99A55FBB7E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B547BAE13D76D547E0EDC3DC85EF9B4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE7219D803F4ACF35C2F645EE1177799;
+			remoteInfo = SHExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05F8C923AB063E8903223E0C9967B4F2 /* SHExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SHExtension-dummy.m"; sourceTree = "<group>"; };
+		06FA59BF74D818666B47C85C274C7E1D /* UIView+SHExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+SHExtension.h"; path = "SHExtension/UIView+SHExtension.h"; sourceTree = "<group>"; };
+		07857E035FCA7B54AD8B2D4C25EDE7A7 /* Pods-SHEmotionKeyboardExmaple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHEmotionKeyboardExmaple.debug.xcconfig"; sourceTree = "<group>"; };
+		0CE3CDC5CE4F2D96439FD83EF9BB47A4 /* Pods-SHEmotionKeyboardExmaple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SHEmotionKeyboardExmaple.release.xcconfig"; sourceTree = "<group>"; };
+		13A3F2AA943B118600B5A8B82EFB4324 /* Pods-SHEmotionKeyboardExmaple-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SHEmotionKeyboardExmaple-umbrella.h"; sourceTree = "<group>"; };
+		2975C0DAA23F2CCD66A5BAD2B7D01CF5 /* SHExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SHExtension-prefix.pch"; sourceTree = "<group>"; };
+		2A330E4DC4F8C0B948FD62F24A62B8E3 /* SHExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SHExtension.framework; path = SHExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47025E838D4CB65BFDF8705E2108D889 /* SHExtension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SHExtension-umbrella.h"; sourceTree = "<group>"; };
+		4B97BACEC6CC8D8DF0293FA0F7BFA28F /* Pods-SHEmotionKeyboardExmaple-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SHEmotionKeyboardExmaple-acknowledgements.plist"; sourceTree = "<group>"; };
+		542F97F154A3645B4A213F3F9C141D9A /* Pods_SHEmotionKeyboardExmaple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SHEmotionKeyboardExmaple.framework; path = "Pods-SHEmotionKeyboardExmaple.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		553EBFDFD6C19EEC7445DD2ABB97E994 /* Pods-SHEmotionKeyboardExmaple-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SHEmotionKeyboardExmaple-dummy.m"; sourceTree = "<group>"; };
+		62FBD20B8F48B36D6DBA8276EA5879DE /* Pods-SHEmotionKeyboardExmaple.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SHEmotionKeyboardExmaple.modulemap"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		94DD2390E386EC6705198BB3E63305BF /* SHExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SHExtension.debug.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A3A3E25F8CF012E4E245BFE24D374811 /* Pods-SHEmotionKeyboardExmaple-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SHEmotionKeyboardExmaple-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B8600BD0659FB1D8C55C7253EA4455FC /* SHExtension-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SHExtension-Info.plist"; sourceTree = "<group>"; };
+		BB6C9B970DAD9152B0D3BC9989A4CCE8 /* SHExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SHExtension.release.xcconfig; sourceTree = "<group>"; };
+		CDA137530E0FD492FE7A2056DF3861A5 /* UIView+SHExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+SHExtension.m"; path = "SHExtension/UIView+SHExtension.m"; sourceTree = "<group>"; };
+		D45A95F7C81DC2EA2A948F3136AFCB73 /* SHExtension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SHExtension.modulemap; sourceTree = "<group>"; };
+		DE382B29C3DBC1D369D79E0AA4525B26 /* Pods-SHEmotionKeyboardExmaple-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SHEmotionKeyboardExmaple-Info.plist"; sourceTree = "<group>"; };
+		F6432C0B605015621D43482BDAA5BC49 /* Pods-SHEmotionKeyboardExmaple-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SHEmotionKeyboardExmaple-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07C19E0CE0F9FFA93C332ED795A80028 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6FDEAF1BA8795CA44E6C99A55FBB7E3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77F212612D084B5E87EA5D7E246F6256 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				872319ED3D50861B4EAF7102F23738B9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		13F661E5418343659CAA5955B99E9B09 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				06FA59BF74D818666B47C85C274C7E1D /* UIView+SHExtension.h */,
+				CDA137530E0FD492FE7A2056DF3861A5 /* UIView+SHExtension.m */,
+			);
+			name = UIView;
+			sourceTree = "<group>";
+		};
+		1483111D8B169ECF5319AE06289B8596 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D45A95F7C81DC2EA2A948F3136AFCB73 /* SHExtension.modulemap */,
+				05F8C923AB063E8903223E0C9967B4F2 /* SHExtension-dummy.m */,
+				B8600BD0659FB1D8C55C7253EA4455FC /* SHExtension-Info.plist */,
+				2975C0DAA23F2CCD66A5BAD2B7D01CF5 /* SHExtension-prefix.pch */,
+				47025E838D4CB65BFDF8705E2108D889 /* SHExtension-umbrella.h */,
+				94DD2390E386EC6705198BB3E63305BF /* SHExtension.debug.xcconfig */,
+				BB6C9B970DAD9152B0D3BC9989A4CCE8 /* SHExtension.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SHExtension";
+			sourceTree = "<group>";
+		};
+		565F62A04913FABCAFC183C3F44E62B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				542F97F154A3645B4A213F3F9C141D9A /* Pods_SHEmotionKeyboardExmaple.framework */,
+				2A330E4DC4F8C0B948FD62F24A62B8E3 /* SHExtension.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				D2B66682A6FD54E7CD26C00584AC2D4F /* Pods */,
+				565F62A04913FABCAFC183C3F44E62B6 /* Products */,
+				D7A7C3BB3D6F2BB577DF13F792C8AA00 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		CF987B1DA2DAAFD8E9BB7A17694113C3 /* SHExtension */ = {
+			isa = PBXGroup;
+			children = (
+				1483111D8B169ECF5319AE06289B8596 /* Support Files */,
+				13F661E5418343659CAA5955B99E9B09 /* UIView */,
+			);
+			name = SHExtension;
+			path = SHExtension;
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2B66682A6FD54E7CD26C00584AC2D4F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF987B1DA2DAAFD8E9BB7A17694113C3 /* SHExtension */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D7A7C3BB3D6F2BB577DF13F792C8AA00 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E53521F15A119BD245917389EB0A2BDA /* Pods-SHEmotionKeyboardExmaple */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E53521F15A119BD245917389EB0A2BDA /* Pods-SHEmotionKeyboardExmaple */ = {
+			isa = PBXGroup;
+			children = (
+				62FBD20B8F48B36D6DBA8276EA5879DE /* Pods-SHEmotionKeyboardExmaple.modulemap */,
+				A3A3E25F8CF012E4E245BFE24D374811 /* Pods-SHEmotionKeyboardExmaple-acknowledgements.markdown */,
+				4B97BACEC6CC8D8DF0293FA0F7BFA28F /* Pods-SHEmotionKeyboardExmaple-acknowledgements.plist */,
+				553EBFDFD6C19EEC7445DD2ABB97E994 /* Pods-SHEmotionKeyboardExmaple-dummy.m */,
+				F6432C0B605015621D43482BDAA5BC49 /* Pods-SHEmotionKeyboardExmaple-frameworks.sh */,
+				DE382B29C3DBC1D369D79E0AA4525B26 /* Pods-SHEmotionKeyboardExmaple-Info.plist */,
+				13A3F2AA943B118600B5A8B82EFB4324 /* Pods-SHEmotionKeyboardExmaple-umbrella.h */,
+				07857E035FCA7B54AD8B2D4C25EDE7A7 /* Pods-SHEmotionKeyboardExmaple.debug.xcconfig */,
+				0CE3CDC5CE4F2D96439FD83EF9BB47A4 /* Pods-SHEmotionKeyboardExmaple.release.xcconfig */,
+			);
+			name = "Pods-SHEmotionKeyboardExmaple";
+			path = "Target Support Files/Pods-SHEmotionKeyboardExmaple";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9A0FCC1D39EC6C595F5AB6EFF8DC1F8F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7000BCD1CC4DA603691F15EC42CB08A1 /* SHExtension-umbrella.h in Headers */,
+				D450E60DFDC817C0F7F6EB344054AFE5 /* UIView+SHExtension.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4A3AB8CB435BFE23629062B638D7C24 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F9216054D502BD1DD730D722E27839F /* Pods-SHEmotionKeyboardExmaple-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AFEB7A8EBF2DE2A7DBDC2713D6C84EBB /* Pods-SHEmotionKeyboardExmaple */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 536D384D04B6D9710D1D5A004963F586 /* Build configuration list for PBXNativeTarget "Pods-SHEmotionKeyboardExmaple" */;
+			buildPhases = (
+				F4A3AB8CB435BFE23629062B638D7C24 /* Headers */,
+				38B38F7EDA58F6ED1E30B1472141494D /* Sources */,
+				07C19E0CE0F9FFA93C332ED795A80028 /* Frameworks */,
+				6C4454F3C260AF017D45F6BAE1F56BCA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				218F887637F983E1141D7C06D4B361EC /* PBXTargetDependency */,
+			);
+			name = "Pods-SHEmotionKeyboardExmaple";
+			productName = "Pods-SHEmotionKeyboardExmaple";
+			productReference = 542F97F154A3645B4A213F3F9C141D9A /* Pods_SHEmotionKeyboardExmaple.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CE7219D803F4ACF35C2F645EE1177799 /* SHExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD8C840040628C36DE51D82A22A6032 /* Build configuration list for PBXNativeTarget "SHExtension" */;
+			buildPhases = (
+				9A0FCC1D39EC6C595F5AB6EFF8DC1F8F /* Headers */,
+				A01354C89032E7FD9155C746F4065482 /* Sources */,
+				77F212612D084B5E87EA5D7E246F6256 /* Frameworks */,
+				0428F9DE5616199517E60A0E72507C65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SHExtension;
+			productName = SHExtension;
+			productReference = 2A330E4DC4F8C0B948FD62F24A62B8E3 /* SHExtension.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 565F62A04913FABCAFC183C3F44E62B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFEB7A8EBF2DE2A7DBDC2713D6C84EBB /* Pods-SHEmotionKeyboardExmaple */,
+				CE7219D803F4ACF35C2F645EE1177799 /* SHExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0428F9DE5616199517E60A0E72507C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C4454F3C260AF017D45F6BAE1F56BCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38B38F7EDA58F6ED1E30B1472141494D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D5C97EE9B5936B078730F04C91349FE /* Pods-SHEmotionKeyboardExmaple-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A01354C89032E7FD9155C746F4065482 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D7DB50516418427561FA6D968524975 /* SHExtension-dummy.m in Sources */,
+				13E6EF8298301EA87AC1F4CA7BE5CE2A /* UIView+SHExtension.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		218F887637F983E1141D7C06D4B361EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SHExtension;
+			target = CE7219D803F4ACF35C2F645EE1177799 /* SHExtension */;
+			targetProxy = B547BAE13D76D547E0EDC3DC85EF9B4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2F078E82413242EDCE3D5406A16F5E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CE3CDC5CE4F2D96439FD83EF9BB47A4 /* Pods-SHEmotionKeyboardExmaple.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		49143FF545F9531DBE25DDB8B9EBFF85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB6C9B970DAD9152B0D3BC9989A4CCE8 /* SHExtension.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SHExtension/SHExtension-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SHExtension/SHExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SHExtension/SHExtension.modulemap";
+				PRODUCT_MODULE_NAME = SHExtension;
+				PRODUCT_NAME = SHExtension;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6427804744C4054555383985007A0B6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		6A9FD3B29DF8FAD46CE509FB0F964BD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94DD2390E386EC6705198BB3E63305BF /* SHExtension.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SHExtension/SHExtension-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SHExtension/SHExtension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SHExtension/SHExtension.modulemap";
+				PRODUCT_MODULE_NAME = SHExtension;
+				PRODUCT_NAME = SHExtension;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		74556EDEC03158A3009CA84D67369133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		A0114F607078CA5F2013D150DEAD91A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07857E035FCA7B54AD8B2D4C25EDE7A7 /* Pods-SHEmotionKeyboardExmaple.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6427804744C4054555383985007A0B6C /* Debug */,
+				74556EDEC03158A3009CA84D67369133 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD8C840040628C36DE51D82A22A6032 /* Build configuration list for PBXNativeTarget "SHExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A9FD3B29DF8FAD46CE509FB0F964BD2 /* Debug */,
+				49143FF545F9531DBE25DDB8B9EBFF85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		536D384D04B6D9710D1D5A004963F586 /* Build configuration list for PBXNativeTarget "Pods-SHEmotionKeyboardExmaple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0114F607078CA5F2013D150DEAD91A2 /* Debug */,
+				2F078E82413242EDCE3D5406A16F5E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,16 @@
+PODS:
+  - SHExtension/UIView (1.1.0)
+
+DEPENDENCIES:
+  - SHExtension/UIView
+
+SPEC REPOS:
+  trunk:
+    - SHExtension
+
+SPEC CHECKSUMS:
+  SHExtension: 4954f7c07cf43efbc430004a2c253c0e20d1a81d
+
+PODFILE CHECKSUM: 9167a63b2530926b273436e0134f81e6e120c55c
+
+COCOAPODS: 1.10.0

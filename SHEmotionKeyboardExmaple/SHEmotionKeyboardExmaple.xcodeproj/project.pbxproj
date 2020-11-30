@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		079C12EE77007892B02040BF /* Pods_SHEmotionKeyboardExmaple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1D9E95BA27F520F9180CB8 /* Pods_SHEmotionKeyboardExmaple.framework */; };
 		5C3D231A2126564300E46D76 /* SHEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D23112126564300E46D76 /* SHEmotionAttachment.m */; };
 		5C3D231B2126564300E46D76 /* SHEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D23132126564300E46D76 /* SHEmotionKeyboard.m */; };
 		5C3D231C2126564300E46D76 /* SHEmotionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C3D23152126564300E46D76 /* SHEmotionKeyboard.bundle */; };
@@ -20,7 +21,6 @@
 		5CC96B8321254CC200E78A40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B8221254CC200E78A40 /* main.m */; };
 		5CC96B8D21254CC200E78A40 /* SHEmotionKeyboardExmapleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B8C21254CC200E78A40 /* SHEmotionKeyboardExmapleTests.m */; };
 		5CC96B9821254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC96B9721254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.m */; };
-		5CF49FBB2125A0E100B90BF5 /* UIView+SHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		325126831A52E79F4D6BD643 /* Pods-SHEmotionKeyboardExmaple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHEmotionKeyboardExmaple.release.xcconfig"; path = "Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple.release.xcconfig"; sourceTree = "<group>"; };
 		5C3D23112126564300E46D76 /* SHEmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionAttachment.m; sourceTree = "<group>"; };
 		5C3D23122126564300E46D76 /* SHEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHEmotionTool.h; sourceTree = "<group>"; };
 		5C3D23132126564300E46D76 /* SHEmotionKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHEmotionKeyboard.m; sourceTree = "<group>"; };
@@ -66,8 +67,8 @@
 		5CC96B9321254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHEmotionKeyboardExmapleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC96B9721254CC200E78A40 /* SHEmotionKeyboardExmapleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHEmotionKeyboardExmapleUITests.m; sourceTree = "<group>"; };
 		5CC96B9921254CC200E78A40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHExtension.m"; sourceTree = "<group>"; };
-		5CF49FBA2125A0E100B90BF5 /* UIView+SHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SHExtension.h"; sourceTree = "<group>"; };
+		CA16EE80A1EE314182D0ED30 /* Pods-SHEmotionKeyboardExmaple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SHEmotionKeyboardExmaple.debug.xcconfig"; path = "Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple.debug.xcconfig"; sourceTree = "<group>"; };
+		EB1D9E95BA27F520F9180CB8 /* Pods_SHEmotionKeyboardExmaple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SHEmotionKeyboardExmaple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079C12EE77007892B02040BF /* Pods_SHEmotionKeyboardExmaple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		506837A9B8AAFFCB1E68A3D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB1D9E95BA27F520F9180CB8 /* Pods_SHEmotionKeyboardExmaple.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5C3D23102126564300E46D76 /* SHEmotionKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,8 @@
 				5CC96B8B21254CC200E78A40 /* SHEmotionKeyboardExmapleTests */,
 				5CC96B9621254CC200E78A40 /* SHEmotionKeyboardExmapleUITests */,
 				5CC96B7121254CC100E78A40 /* Products */,
+				986FD72C75B4E48972D9E2B9 /* Pods */,
+				506837A9B8AAFFCB1E68A3D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				5C3D23102126564300E46D76 /* SHEmotionKeyboard */,
-				5CF49FB82125A0E100B90BF5 /* Helper(帮助类) */,
 				5CC96B7321254CC100E78A40 /* AppDelegate.h */,
 				5CC96B7421254CC100E78A40 /* AppDelegate.m */,
 				5CC96B7621254CC100E78A40 /* ViewController.h */,
@@ -167,13 +178,13 @@
 			path = SHEmotionKeyboardExmapleUITests;
 			sourceTree = "<group>";
 		};
-		5CF49FB82125A0E100B90BF5 /* Helper(帮助类) */ = {
+		986FD72C75B4E48972D9E2B9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5CF49FB92125A0E100B90BF5 /* UIView+SHExtension.m */,
-				5CF49FBA2125A0E100B90BF5 /* UIView+SHExtension.h */,
+				CA16EE80A1EE314182D0ED30 /* Pods-SHEmotionKeyboardExmaple.debug.xcconfig */,
+				325126831A52E79F4D6BD643 /* Pods-SHEmotionKeyboardExmaple.release.xcconfig */,
 			);
-			path = "Helper(帮助类)";
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CC96B9C21254CC200E78A40 /* Build configuration list for PBXNativeTarget "SHEmotionKeyboardExmaple" */;
 			buildPhases = (
+				F3DAA43585ECA56BDE3A5D6B /* [CP] Check Pods Manifest.lock */,
 				5CC96B6C21254CC100E78A40 /* Sources */,
 				5CC96B6D21254CC100E78A40 /* Frameworks */,
 				5CC96B6E21254CC100E78A40 /* Resources */,
+				86B3D8571DB26B67E0EEB3E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,6 +315,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		86B3D8571DB26B67E0EEB3E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SHEmotionKeyboardExmaple/Pods-SHEmotionKeyboardExmaple-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3DAA43585ECA56BDE3A5D6B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SHEmotionKeyboardExmaple-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5CC96B6C21254CC100E78A40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -310,7 +365,6 @@
 				5C3D231D2126564300E46D76 /* SHEmotionTool.m in Sources */,
 				5CC96B7821254CC100E78A40 /* ViewController.m in Sources */,
 				5C3D231E2126564300E46D76 /* SHEmotionModel.m in Sources */,
-				5CF49FBB2125A0E100B90BF5 /* UIView+SHExtension.m in Sources */,
 				5CC96B8321254CC200E78A40 /* main.m in Sources */,
 				5C3D231A2126564300E46D76 /* SHEmotionAttachment.m in Sources */,
 				5CC96B7521254CC100E78A40 /* AppDelegate.m in Sources */,
@@ -481,6 +535,7 @@
 		};
 		5CC96B9D21254CC200E78A40 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA16EE80A1EE314182D0ED30 /* Pods-SHEmotionKeyboardExmaple.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -497,6 +552,7 @@
 		};
 		5CC96B9E21254CC200E78A40 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 325126831A52E79F4D6BD643 /* Pods-SHEmotionKeyboardExmaple.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

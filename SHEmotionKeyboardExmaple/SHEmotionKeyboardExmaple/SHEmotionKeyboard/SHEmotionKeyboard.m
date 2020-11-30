@@ -424,6 +424,7 @@
     for (int i = 0; i < pageNum; i++) {
         
         SHEmotionPageView *view = [[SHEmotionPageView alloc] init];
+
         view.tag = self.currentType;
         //切割每一页的表情集合
         NSRange range;
@@ -526,6 +527,7 @@
     
     //设置背景
     self.backgroundColor = [UIColor whiteColor];
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     self.emotionScroll.contentSize = CGSizeMake(self.toolArr.count * kToolBtnW, self.height);
     
@@ -676,17 +678,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emotionSendBtnSelected) name:@"EmotionSendBtnSelectedNoti" object:nil];
     //更新收藏视图通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCollectView) name:@"UpdateCollectViewNoti" object:nil];
+
+    //设置toolBar的Y
+    self.toolBar.y = self.height - self.toolBar.height - SafeBottomH;
+    //初始化
+    [self.toolBar setup];
     
     //适配全面屏
     UIView *view = [[UIView alloc]init];
-    view.frame = CGRectMake(0, kKeyboardH, kScreenW, SafeBottomH);
-    view.backgroundColor = [UIColor whiteColor];
+    view.frame = CGRectMake(0, self.toolBar.maxY, kScreenW, SafeBottomH);
+    view.backgroundColor = self.toolBar.backgroundColor;
     [self addSubview:view];
-    
-    //初始化
-    self.toolBar = nil;
-    //设置toolBar的Y
-    self.toolBar.y = self.height - self.toolBar.height - SafeBottomH;
 }
 
 #pragma mark 懒加载
@@ -698,7 +700,6 @@
         _toolBar.delegate = self;
         _toolBar.toolArr = self.toolBarArr;
         _toolBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        [_toolBar setup];
         [self addSubview:_toolBar];
     }
     return _toolBar;
